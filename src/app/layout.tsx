@@ -10,8 +10,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "iOS Web App",
-  description: "A web-based iOS-like interface",
+  title: "1234webtool",
+  description: "A web-based tool for various applications",
 };
 
 export default function RootLayout({

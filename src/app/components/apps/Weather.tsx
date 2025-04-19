@@ -1,9 +1,9 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 const Weather = () => {
-  const [weather, setWeather] = useState({
+  const [weather] = useState({
     temperature: 72,
     condition: 'Sunny',
     location: 'San Francisco',

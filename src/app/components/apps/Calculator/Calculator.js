@@ -88,7 +88,11 @@ function Calculator() {
           ? "Brackets are not balanced!"
           : "Invalid Input!!"; //error.message;
     }
-    isNaN(result) ? setAnswer(result) : setAnswer(round(result, 3));
+    if (isNaN(result)) {
+      setAnswer(result);
+    } else {
+      setAnswer(round(result, 3));
+    }
   };
 
   // remove last character

@@ -4,26 +4,33 @@ import "./Todo/Todo.css";
 import TodoForm from "./Todo/TodoForm";
 import TodoItem from "./Todo/TodoItem";
 
-function TodoApp() {
-  const [todos, setTodos] = useState([]);
+type Todo = {
+  id: number;
+  text: string;
+  completed: boolean;
+  important: boolean;
+};
 
-  const addTodo = (text: any) => {
+function TodoApp() {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const addTodo = (text: string) => {
     let id = 1;
     if (todos.length > 0) {
       id = todos[0].id + 1
     }
-    let todo = { id: id, text: text, completed: false, important: false }
-    let newTodos = [todo, ...todos]
+    const todo = { id: id, text: text, completed: false, important: false }
+    const newTodos = [todo, ...todos]
     setTodos(newTodos)
   };
 
-  const removeTodo = (id: any) => {
-    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
+  const removeTodo = (id: number) => {
+    const updatedTodos = [...todos].filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
-  const completeTodo = (id: any) => {
-    let updatedTodos = todos.map((todo) => {
+  const completeTodo = (id: number) => {
+    const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed
       }
@@ -32,8 +39,8 @@ function TodoApp() {
     setTodos(updatedTodos)
   }
 
-  const importantTodo = (id: any) => {
-    let updatedTodos = todos.map((todo) => {
+  const importantTodo = (id: number) => {
+    const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.important = !todo.important
       }
@@ -42,7 +49,7 @@ function TodoApp() {
 
     setTodos(updatedTodos)
   }
-  let sortedTodos = todos.sort((a, b) => b.important - a.important)
+  const sortedTodos = [...todos].sort((a, b) => b.important === a.important ? 0 : b.important ? -1 : 1)
   return (
     <div className="todo-app">
       <h1>Todo List</h1>

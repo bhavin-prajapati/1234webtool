@@ -66,7 +66,7 @@ const HomeScreen = () => {
       <div className="pt-32 px-24 min-h-screen">
         {/* Grid container */}
         <ul id="hexGrid">
-          {apps.map((app, index) => (
+          {apps.map((app) => (
             <li className="hex" key={app.name}>
               <div className="hexIn">
                 <a className="hexLink" href={app.href}>
