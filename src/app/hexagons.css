@@ -3,7 +3,7 @@
     padding: 0;
 }
 body {
-    background: rgba(169, 169, 169, 0.69);
+    background: rgba(223, 233, 245, 0.69);
 }
 #hexGrid {
   display: flex;
@@ -71,7 +71,7 @@ body {
   width: 100%;
   padding: 5%;
   box-sizing:border-box;
-  background-color: rgba(255, 255, 0);
+  background-color: rgb(255, 242, 0);
 }
 .hex h1 {
   bottom: 50%;
