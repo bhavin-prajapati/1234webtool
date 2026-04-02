@@ -1,55 +1,139 @@
 'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
 
-const Weather = () => {
-  const [weather] = useState({
-    temperature: 72,
-    condition: 'Sunny',
-    location: 'San Francisco',
-    high: 75,
-    low: 65
-  });
+import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
+
+interface WeatherData {
+  name: string;
+  main: { temp: number; humidity: number };
+  weather: Array<{ main: string; description: string; icon: string }>;
+  wind: { speed: number };
+}
+
+interface ForecastItem {
+  dt: number;
+  main: { temp: number };
+  weather: Array<{ main: string; description: string; icon: string }>;
+}
+
+const API_KEY = '9df93e2e16bb4e07b2f9ff45de8ec8c3';
+
+function Weather() {
+  const [searchInput, setSearchInput] = useState("");
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [city, setCity] = useState("london");
+  const [forecast, setForecast] = useState<ForecastItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const [loading, setLoading] = useState(false);
+
+  const fetchWeatherData = useCallback(async (cityName: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=imperial`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+      setWeatherData(data);
+
+      const foreCastresponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`
+      );
+      const forecastdata = await foreCastresponse.json();
+
+      console.log(forecastdata);
+
+      setCity(cityName);
+
+      const dailyForecast = forecastdata.list.filter(
+        (item: ForecastItem, index: number) => index % 8 === 0
+      );
+      setForecast(dailyForecast);
+    } catch (error) {
+      setError("Sorry, we couldn’t retrieve the weather data at this time");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchWeatherData(city);
+  }, [city, fetchWeatherData]);
+
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    fetchWeatherData(searchInput);
+  }
+
+  if (loading) return <div className="wrapper">Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-400 to-blue-600">
-      {/* iOS-style header */}
-      <div className="status-bar fixed top-0 left-0 right-0 h-14 px-4 flex justify-between items-center">
-        <Link href="/" className="text-white">
-          <span>←</span>
-        </Link>
-        <h1 className="text-lg font-semibold text-white">Weather</h1>
-        <div className="w-4"></div>
-      </div>
+    <div className="wrapper">
+      <form onSubmit={handleSearch} className="search">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Enter city name"
+          className="search-input"
+        />
+        <button type="submit" className="search-btn">
+          Search
+        </button>
+      </form>
+      {error && <p className="error">{error}</p>}
 
-      <div className="pt-16 px-4 text-white">
-        <div className="text-center pt-10">
-          <h2 className="text-2xl mb-2">{weather.location}</h2>
-          <div className="text-8xl font-thin mb-4">{weather.temperature}°</div>
-          <div className="text-xl mb-6">{weather.condition}</div>
-          <div className="flex justify-center gap-4">
-            <span>H:{weather.high}°</span>
-            <span>L:{weather.low}°</span>
+      {weatherData && weatherData.main && weatherData.weather && (
+        <>
+          <div className="header">
+            <h1 className="city">{weatherData.name}</h1>
+            <p className="temperature">{weatherData.main.temp}°F</p>
+            <p className="condition">{weatherData.weather[0].main}</p>
           </div>
-        </div>
+          <div className="weather-details">
+            <div >
+              <p >Humidity</p>
+              <p style={{ fontWeight: "bold" }}>{Math.round(weatherData.main.humidity)}%</p>
+            </div>
+            <div>
+              <p>Wind Speed</p>
+              <p style={{ fontWeight: "bold" }}>{Math.round(weatherData.wind.speed)} mph</p>
+            </div>
+          </div>
+        </>
+      )}
 
-        <div className="mt-10">
-          <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4">
-            <h3 className="text-lg mb-4">Hourly Forecast</h3>
-            <div className="flex justify-between">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="text-center">
-                  <div className="mb-2">{`${(i + 1)}PM`}</div>
-                  <div className="text-2xl mb-2">☀️</div>
-                  <div>{weather.temperature - i}°</div>
+      {forecast.length > 0 && (
+        <>
+          <div className="forecast">
+            <h2 className="forecast-header">5-Day Forecast</h2>
+            <div className="forecast-days">
+              {forecast.map((day, index) => (
+                <div key={index} className="forecast-day">
+                  <p>
+                    {new Date(day.dt * 1000).toLocaleDateString("en-US", {
+                      weekday: "short",
+                    })}
+                  </p>
+                  <Image
+                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    alt={day.weather[0].description}
+                    width={50}
+                    height={50}
+                    unoptimized
+                  />
+                  <p>{Math.round(day.main.temp)}°F</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
-};
+}
 
 export default Weather; 

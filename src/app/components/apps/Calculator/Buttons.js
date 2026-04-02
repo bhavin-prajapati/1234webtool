@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles/Buttons.css";
 // import CALCULATOR_BUTTONS from "./CalculatorButtons";
 
 const Buttons = ({ inputHandler, clearInput, backspace, changePlusMinus, calculateAns }) => {
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.getElementById("equalbtn").click();
-    }
-  });
+  useEffect(() => {
+    const handleKeydown = (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("equalbtn").click();
+      }
+    };
+    document.addEventListener("keydown", handleKeydown);
+    return () => document.removeEventListener("keydown", handleKeydown);
+  }, []);
 
   return (
     <div className="show-btn">
