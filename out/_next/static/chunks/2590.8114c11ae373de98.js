@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2590],{62590:(e,s,r)=>{r.r(s),r.d(s,{default:()=>t});var a=r(95155);r(12115);var l=r(30343),c=r(18576);r(25895),r(26766);let t=()=>{let e=(0,l.Hx)();return(0,a.jsx)("div",{className:"min-h-screen bg-gray-50",children:(0,a.jsx)("div",{className:"pt-16 px-4",children:(0,a.jsx)(c.NP,{editor:e})})})}}}]);
