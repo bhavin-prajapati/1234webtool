@@ -33,11 +33,11 @@ const HomeScreen = () => {
       description: 'Manage your tasks and stay organized'
     },
     {
-      name: 'Clock',
+      name: 'Timer',
       icon: <ClockIcon />,
       color: 'bg-gradient-to-br from-red-400 to-red-500',
-      href: '/apps/clock',
-      description: 'View the time, set alarms, and use timers'
+      href: '/apps/timer',
+      description: 'Set countdown timers with preset durations'
     },
     {
       name: 'Calendar',
