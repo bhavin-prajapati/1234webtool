@@ -8,55 +8,64 @@ const HomeScreen = () => {
       name: 'Notes',
       icon: <PencilSquareIcon />,
       color: 'bg-gradient-to-br from-yellow-400 to-yellow-500',
-      href: '/apps/notes'
+      href: '/apps/notes',
+      description: 'Jot down quick thoughts, ideas, and reminders'
     },
     {
       name: 'Calculator',
       icon: <CalculatorIcon />,
       color: 'bg-gradient-to-br from-gray-700 to-gray-800',
-      href: '/apps/calculator'
+      href: '/apps/calculator',
+      description: 'Perform basic and advanced calculations'
     },
     {
       name: 'Weather',
       icon: <CloudIcon />,
       color: 'bg-gradient-to-br from-blue-400 to-blue-600',
-      href: '/apps/weather'
+      href: '/apps/weather',
+      description: 'Check current conditions and forecasts'
     },
     {
       name: 'Todo',
       icon: <ClipboardDocumentListIcon />,
       color: 'bg-gradient-to-br from-green-400 to-green-600',
-      href: '/apps/todo'
+      href: '/apps/todo',
+      description: 'Manage your tasks and stay organized'
     },
     {
       name: 'Clock',
       icon: <ClockIcon />,
       color: 'bg-gradient-to-br from-red-400 to-red-500',
-      href: '/apps/clock'
+      href: '/apps/clock',
+      description: 'View the time, set alarms, and use timers'
     },
     {
       name: 'Calendar',
       icon: <CalendarDaysIcon />,
       color: 'bg-gradient-to-br from-red-400 to-red-500',
-      href: '/apps/calendar'
+      href: '/apps/calendar',
+      description: 'Schedule events and track important dates'
     },
     {
       name: 'Photos',
       icon: <PhotoIcon />,
       color: 'bg-gradient-to-br from-purple-400 to-purple-600',
-      href: '/apps/photos'
+      href: '/apps/photos',
+      description: 'Browse and organize your photo library'
     },
     {
       name: 'Settings',
       icon: <WrenchScrewdriverIcon />,
       color: 'bg-gradient-to-br from-gray-400 to-gray-600',
-      href: '/apps/settings'
+      href: '/apps/settings',
+      description: 'Customize preferences and configurations'
     },
     {
       name: 'Messages',
       icon: <ChatBubbleBottomCenterTextIcon />,
       color: 'bg-gradient-to-br from-green-400 to-green-500',
-      href: '/apps/messages'
+      href: '/apps/messages',
+      description: 'Send and receive messages with others'
     }
   ];
 
@@ -76,7 +85,7 @@ const HomeScreen = () => {
                     paddingTop: '40%'
                   }}>{app.icon}</div>
                   <h1>{app.name}</h1>
-                  <p>Some sample text about the article this hexagon leads to</p>
+                  <p>{app.description}</p>
                 </a>
               </div>
             </li>

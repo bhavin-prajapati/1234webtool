@@ -1,0 +1,133 @@
+/* Fix react-big-calendar text visibility broken by Tailwind preflight */
+
+.rbc-calendar {
+  color: #1f2937; /* gray-800 */
+  font-family: inherit;
+}
+
+/* Toolbar */
+.rbc-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rbc-toolbar button {
+  color: #374151;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.rbc-toolbar button:hover {
+  background: #e5e7eb;
+}
+
+.rbc-toolbar button.rbc-active {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.rbc-toolbar .rbc-toolbar-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  flex: 1;
+  text-align: center;
+}
+
+/* Header row (day names) */
+.rbc-header {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Date numbers */
+.rbc-date-cell {
+  color: #374151;
+  font-size: 13px;
+  padding: 4px 6px;
+  text-align: right;
+}
+
+.rbc-date-cell.rbc-now {
+  font-weight: 700;
+}
+
+.rbc-date-cell a {
+  color: inherit;
+}
+
+/* Today highlight */
+.rbc-today {
+  background-color: #eff6ff;
+}
+
+/* Off-range days */
+.rbc-off-range-bg {
+  background: #f9fafb;
+}
+
+.rbc-off-range .rbc-date-cell {
+  color: #d1d5db;
+}
+
+/* Events */
+.rbc-event {
+  background-color: #3b82f6;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 2px 6px;
+  border: none;
+}
+
+.rbc-event:focus {
+  outline: 2px solid #2563eb;
+}
+
+.rbc-event-label,
+.rbc-event-content {
+  color: #ffffff;
+}
+
+/* Show more link */
+.rbc-show-more {
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Time gutter labels */
+.rbc-time-slot .rbc-label {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* Agenda view */
+.rbc-agenda-view table.rbc-agenda-table {
+  color: #1f2937;
+}
+
+.rbc-agenda-date-cell,
+.rbc-agenda-time-cell {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.rbc-agenda-event-cell {
+  color: #1f2937;
+  font-size: 14px;
+}
