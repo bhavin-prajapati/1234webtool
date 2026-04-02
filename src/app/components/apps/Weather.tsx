@@ -21,51 +21,83 @@ const API_KEY = '9df93e2e16bb4e07b2f9ff45de8ec8c3';
 function Weather() {
   const [searchInput, setSearchInput] = useState("");
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [city, setCity] = useState("london");
   const [forecast, setForecast] = useState<ForecastItem[]>([]);
   const [error, setError] = useState<string | null>(null);
-
   const [loading, setLoading] = useState(false);
 
-  const fetchWeatherData = useCallback(async (cityName: string) => {
+  const fetchWeatherByCoords = useCallback(async (lat: number, lon: number) => {
     try {
       setLoading(true);
       setError(null);
 
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=imperial`;
-
-      const response = await fetch(url);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
+      );
       const data = await response.json();
       setWeatherData(data);
 
-      const foreCastresponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`
+      const forecastResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`
       );
-      const forecastdata = await foreCastresponse.json();
+      const forecastData = await forecastResponse.json();
 
-      console.log(forecastdata);
-
-      setCity(cityName);
-
-      const dailyForecast = forecastdata.list.filter(
-        (item: ForecastItem, index: number) => index % 8 === 0
+      const dailyForecast = forecastData.list.filter(
+        (_item: ForecastItem, index: number) => index % 8 === 0
       );
       setForecast(dailyForecast);
-    } catch (error) {
-      setError("Sorry, we couldn’t retrieve the weather data at this time");
-      console.log(error);
+    } catch {
+      setError("Sorry, we couldn't retrieve the weather data at this time");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const fetchWeatherByCity = useCallback(async (cityName: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=imperial`
+      );
+      const data = await response.json();
+      setWeatherData(data);
+
+      const forecastResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`
+      );
+      const forecastData = await forecastResponse.json();
+
+      const dailyForecast = forecastData.list.filter(
+        (_item: ForecastItem, index: number) => index % 8 === 0
+      );
+      setForecast(dailyForecast);
+    } catch {
+      setError("Sorry, we couldn't retrieve the weather data at this time");
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchWeatherData(city);
-  }, [city, fetchWeatherData]);
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          fetchWeatherByCoords(position.coords.latitude, position.coords.longitude);
+        },
+        () => {
+          // Geolocation denied or unavailable — fall back to default city
+          fetchWeatherByCity("london");
+        }
+      );
+    } else {
+      fetchWeatherByCity("london");
+    }
+  }, [fetchWeatherByCoords, fetchWeatherByCity]);
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    fetchWeatherData(searchInput);
+    fetchWeatherByCity(searchInput);
   }
 
   if (loading) return <div className="wrapper">Loading...</div>;
@@ -119,7 +151,7 @@ function Weather() {
                     })}
                   </p>
                   <Image
-                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
                     alt={day.weather[0].description}
                     width={50}
                     height={50}
