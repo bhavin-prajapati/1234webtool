@@ -59,7 +59,7 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 
 gcloud storage buckets add-iam-policy-binding gs://${BUCKET_NAME} \
     --member="allUsers" \
-    --role="roles/storage.objectViewer"
+    --role="roles/storage.objectAdmin"
 
 gcloud storage buckets update gs://${BUCKET_NAME} --web-main-page-suffix=index.html
 
