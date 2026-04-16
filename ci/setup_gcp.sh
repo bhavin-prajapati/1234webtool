@@ -61,6 +61,8 @@ gcloud storage buckets add-iam-policy-binding gs://${BUCKET_NAME} \
     --member="allUsers" \
     --role="roles/storage.objectViewer"
 
+gcloud storage buckets update gs://${BUCKET_NAME} --web-main-page-suffix=index.html
+
 echo "Bucket URL: https://storage.googleapis.com/${BUCKET_NAME}/[OBJECT_NAME]"
 
 echo "Setup complete! You can now use the service account ${SERVICE_ACCOUNT_EMAIL} with Workload Identity Federation in your GitHub Actions workflow."
