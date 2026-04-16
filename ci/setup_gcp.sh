@@ -53,4 +53,8 @@ gcloud iam workload-identity-pools providers create-oidc "${PROVIDER_NAME}" \
 
 gcloud storage buckets create gs://${BUCKET_NAME} --location=US --project=${PROJECT_ID}
 
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+    --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
+    --role="roles/storage.objectCreator"
+
 echo "Setup complete! You can now use the service account ${SERVICE_ACCOUNT_EMAIL} with Workload Identity Federation in your GitHub Actions workflow."
