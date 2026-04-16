@@ -1,9 +1,13 @@
 name: Deploy to Google Cloud Storage
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      run_optional_job:
+        description: 'Deploy to Google Cloud Storage'
+        required: true
+        default: false
+        type: boolean
 
 # Required for Workload Identity Federation
 permissions:
@@ -13,6 +17,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_optional_job == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

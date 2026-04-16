@@ -1,13 +1,18 @@
 name: Deploy to AWS S3
+
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      run_optional_job:
+        description: 'Deploy to AWS S3'
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.inputs.run_optional_job == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v1
