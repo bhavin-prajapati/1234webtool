@@ -48,7 +48,7 @@ gcloud iam workload-identity-pools providers create-oidc "${PROVIDER_NAME}" \
     --location="global" \
     --workload-identity-pool="${POOL_NAME}" \
     --issuer-uri="${ISSUER_URI}" \
-    --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository" \
+    --attribute-mapping="google.subject=assertion.sub" \
     --attribute-condition="assertion.repository_owner=='${REPOSITORY_OWNER}' && assertion.ref=='refs/heads/main'"
 
 gcloud storage buckets create gs://${BUCKET_NAME} --location=US --project=${PROJECT_ID}
