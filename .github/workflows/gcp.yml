@@ -18,8 +18,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.run_optional_job == 'true' }}
-    permissions:
-      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,6 +27,7 @@ jobs:
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v2'
         with:
+          token_format: 'access_token'
           # Use Workload Identity Federation (Recommended)
           # 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_NAME/providers/PROVIDER_NAME'
           workload_identity_provider: 'projects/1053952427712/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
