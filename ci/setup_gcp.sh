@@ -57,4 +57,10 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
     --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
     --role="roles/storage.objectCreator"
 
+gcloud storage buckets add-iam-policy-binding gs://${BUCKET_NAME} \
+    --member="allUsers" \
+    --role="roles/storage.objectViewer"
+
+echo "Bucket URL: https://storage.googleapis.com/${BUCKET_NAME}/[OBJECT_NAME]"
+
 echo "Setup complete! You can now use the service account ${SERVICE_ACCOUNT_EMAIL} with Workload Identity Federation in your GitHub Actions workflow."
