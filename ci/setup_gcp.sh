@@ -26,6 +26,12 @@ gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
 # Grant the Service Account Token Creator role to the service account
 gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
   --project="${PROJECT_ID}" \
+  --role="roles/iam.serviceAccountUser" \
+  --member=serviceAccount:${SERVICE_ACCOUNT_EMAIL}
+
+# Grant the Service Account Token Creator role to the service account
+gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
+  --project="${PROJECT_ID}" \
   --role="roles/iam.serviceAccountTokenCreator" \
   --member=serviceAccount:${SERVICE_ACCOUNT_EMAIL}
 
@@ -41,7 +47,7 @@ gcloud iam workload-identity-pools providers create-oidc "${PROVIDER_NAME}" \
     --location="global" \
     --workload-identity-pool="${POOL_NAME}" \
     --issuer-uri="${ISSUER_URI}" \
-    --attribute-mapping="google.subject=assertion.sub" \
+    --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository" \
     --attribute-condition="assertion.repository_owner=='${REPOSITORY_OWNER}' && assertion.ref=='refs/heads/main'"
 
 gcloud storage buckets create gs://${BUCKET_NAME} --location=US --project=${PROJECT_ID}
