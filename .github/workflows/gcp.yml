@@ -40,3 +40,4 @@ jobs:
           destination: '1234webtool' # Target bucket and optional prefix
           parent: false  # If false, skips creating the 'dist' folder inside the bucket
           gzip: true     # Enable gzip compression for the upload
+          process_gcloudignore: false # Process .gcloudignore file to exclude files from upload
