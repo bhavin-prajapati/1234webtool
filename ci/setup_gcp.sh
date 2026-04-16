@@ -1,4 +1,5 @@
 REPOSITORY_OWNER="bhavin-prajapati"
+SERVICE_ACCOUNT_EMAIL="webtool-service-account@webtool-493515.iam.gserviceaccount.com"
 POOL_NAME="github-actions-pool"
 PROVIDER_NAME="github-actions-provider"
 PROJECT_ID="webtool-493515"
@@ -15,9 +16,11 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --member="user:bhavin.prajapati@gmail.com" \
   --role="roles/iam.workloadIdentityPoolAdmin"
 
-gcloud projects add-iam-policy-binding 1234webtool \
-    --member="user:bhavin.prajapati@gmail.com" \
-    --role="roles/iam.workloadIdentityPoolAdmin"
+# Grant the Workload Identity User role to the service account
+gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
+  --project="${PROJECT_ID}" \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}"
 
 # Create the Pool
 gcloud iam workload-identity-pools create "${POOL_NAME}" \

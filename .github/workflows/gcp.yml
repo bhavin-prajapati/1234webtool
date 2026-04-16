@@ -30,7 +30,7 @@ jobs:
           # Use Workload Identity Federation (Recommended)
           # 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_NAME/providers/PROVIDER_NAME'
           workload_identity_provider: 'projects/1053952427712/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
-          service_account: 'service-1053952427712@gs-project-accounts.iam.gserviceaccount.com'
+          service_account: 'webtool-service-account@webtool-493515.iam.gserviceaccount.com'
 
       # 2. Upload to Cloud Storage
       - id: 'upload-file'
