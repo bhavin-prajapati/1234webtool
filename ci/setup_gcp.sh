@@ -1,6 +1,7 @@
 REPOSITORY_OWNER="bhavin-prajapati"
 SERVICE_ACCOUNT_EMAIL="webtool-service-account@webtool-493515.iam.gserviceaccount.com"
 PROJECT_ID="webtool-493515"
+PROJECT_NUMBER="1053952427712"
 ISSUER_URI="https://token.actions.githubusercontent.com"
 POOL_NAME="github-actions-pool"
 PROVIDER_NAME="github-actions-provider"
@@ -23,7 +24,7 @@ gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
   --role="roles/iam.workloadIdentityUser" \
   --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}"
 
-# Grant the Service Account Token Creator role to the service account
+# Grant the Service Account User role to the service account
 gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
   --project="${PROJECT_ID}" \
   --role="roles/iam.serviceAccountUser" \
@@ -33,7 +34,7 @@ gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
 gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
   --project="${PROJECT_ID}" \
   --role="roles/iam.serviceAccountTokenCreator" \
-  --member=serviceAccount:${SERVICE_ACCOUNT_EMAIL}
+  --member="principalSet://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${POOL_NAME}/*"
 
 # Create the Pool
 gcloud iam workload-identity-pools create "${POOL_NAME}" \
