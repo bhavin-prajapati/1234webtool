@@ -1,9 +1,10 @@
 REPOSITORY_OWNER="bhavin-prajapati"
 SERVICE_ACCOUNT_EMAIL="webtool-service-account@webtool-493515.iam.gserviceaccount.com"
-POOL_NAME="github-actions-pool"
-PROVIDER_NAME="github-actions-provider"
 PROJECT_ID="webtool-493515"
 ISSUER_URI="https://token.actions.githubusercontent.com"
+POOL_NAME="github-actions-pool"
+PROVIDER_NAME="github-actions-provider"
+BUCKET_NAME="1234webtool"
 
 echo "Setting up Workload Identity Federation in GCP..."
 echo "Project ID: ${PROJECT_ID}"
@@ -36,3 +37,7 @@ gcloud iam workload-identity-pools providers create-oidc "${PROVIDER_NAME}" \
     --issuer-uri="${ISSUER_URI}" \
     --attribute-mapping="google.subject=assertion.sub" \
     --attribute-condition="assertion.repository_owner=='${REPOSITORY_OWNER}' && assertion.ref=='refs/heads/main'"
+
+gcloud storage buckets create gs://${BUCKET_NAME} --location=US --project=${PROJECT_ID}
+
+echo "Setup complete! You can now use the service account ${SERVICE_ACCOUNT_EMAIL} with Workload Identity Federation in your GitHub Actions workflow."
