@@ -23,6 +23,12 @@ gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
   --role="roles/iam.workloadIdentityUser" \
   --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}"
 
+# Grant the Service Account Token Creator role to the service account
+gcloud iam service-accounts add-iam-policy-binding ${SERVICE_ACCOUNT_EMAIL} \
+  --project="${PROJECT_ID}" \
+  --role="roles/iam.serviceAccountTokenCreator" \
+  --member=serviceAccount:${SERVICE_ACCOUNT_EMAIL}
+
 # Create the Pool
 gcloud iam workload-identity-pools create "${POOL_NAME}" \
   --project="${PROJECT_ID}" \
