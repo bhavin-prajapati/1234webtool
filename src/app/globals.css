@@ -67,3 +67,28 @@ body {
 .group:hover .ios-app-icon {
   animation: none;
 }
+
+/* Rotating gradient background */
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.animate-gradient-rotate {
+  animation: gradient-rotate 8s linear infinite;
+}
+
+/* Force white link text in app menu */
+.app-menu-link,
+.app-menu-link:visited,
+.app-menu-link:hover,
+.app-menu-link:active {
+  color: white !important;
+}

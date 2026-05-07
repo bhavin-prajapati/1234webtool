@@ -1,0 +1,10 @@
+{
+  "name": "1234WebTool Chrome Extension",
+  "description": "A collection of tools to enhance your productivity and organization.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "logo.png"
+  }
+}

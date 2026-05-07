@@ -27,6 +27,7 @@ interface CalendarEvent {
 const STORAGE_KEY = 'calendar-events';
 
 function loadEvents(): CalendarEvent[] {
+  if (typeof window === 'undefined') return [];
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return [];
@@ -42,6 +43,7 @@ function loadEvents(): CalendarEvent[] {
 }
 
 function saveEvents(events: CalendarEvent[]) {
+  if (typeof window === 'undefined') return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
 }
 

@@ -1,9 +1,10 @@
 {
   "name": "1234webtool",
+  "description": "A collection of tools to enhance your productivity and organization.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--require ./scripts/fix-localstorage.js' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
