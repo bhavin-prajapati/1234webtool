@@ -46,15 +46,15 @@ const HomeScreen = () => {
         {/* Swiss Army Knife Button */}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="focus:outline-none transition-transform duration-500 ease-out"
+          className="border-none bg-transparent focus:outline-none transition-transform duration-500 ease-out"
           style={{ transform: isOpen ? 'rotate(-15deg) scale(0.9)' : 'rotate(0deg) scale(1)' }}
           aria-label="Open app menu"
         >
           <Image
             src="/webtool.png"
             alt="Swiss Army Knife"
-            width={128}
-            height={128}
+            width={190}
+            height={62}
             className="drop-shadow-2xl hover:scale-105 transition-transform duration-300"
             draggable={false}
           />
