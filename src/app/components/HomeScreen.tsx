@@ -13,16 +13,18 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from '@heroicons/react/24/outline';
 
+const IMG_WIDTH = 190;
+
 const apps = [
-  { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: '/apps/notes' },
-  { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: '/apps/calculator' },
-  { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: '/apps/weather' },
-  { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: '/apps/todo' },
-  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: '/apps/timer' },
-  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: '/apps/calendar' },
-  { name: 'Photos', icon: PhotoIcon, color: 'from-purple-400 to-purple-600', href: '/apps/photos' },
-  { name: 'Settings', icon: WrenchScrewdriverIcon, color: 'from-gray-400 to-gray-600', href: '/apps/settings' },
-  { name: 'Messages', icon: ChatBubbleBottomCenterTextIcon, color: 'from-green-400 to-green-500', href: '/apps/messages' },
+  { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: '/apps/notes', desc: 'Jot down quick notes and ideas' },
+  { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: '/apps/calculator', desc: 'Perform basic and scientific calculations' },
+  { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: '/apps/weather', desc: 'Check current weather conditions' },
+  { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: '/apps/todo', desc: 'Manage your tasks and to-do lists' },
+  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: '/apps/timer', desc: 'Set timers and stopwatches' },
+  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: '/apps/calendar', desc: 'View and manage your schedule' },
+  { name: 'Photos', icon: PhotoIcon, color: 'from-purple-400 to-purple-600', href: '/apps/photos', desc: 'Browse and organize your photos' },
+  { name: 'Settings', icon: WrenchScrewdriverIcon, color: 'from-gray-400 to-gray-600', href: '/apps/settings', desc: 'Configure app preferences' },
+  { name: 'Messages', icon: ChatBubbleBottomCenterTextIcon, color: 'from-green-400 to-green-500', href: '/apps/messages', desc: 'Send and receive messages' },
 ];
 
 const HomeScreen = () => {
@@ -41,7 +43,12 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: 'rgb(223, 233, 245)' }}>
+    <div className="min-h-screen flex items-center justify-center animate-gradient-rotate"
+      style={{
+        background: 'linear-gradient(var(--gradient-angle, 0deg), #2d2d2d, #a0a0a0, #d4d4d4, #a0a0a0, #2d2d2d)',
+        backgroundSize: '200% 200%',
+      }}
+    >
       <div ref={menuRef} className="relative flex flex-col items-center">
         {/* Swiss Army Knife Button */}
         <button
@@ -62,34 +69,33 @@ const HomeScreen = () => {
 
         {/* Dropdown List */}
         <div
-          className="absolute top-full mt-4 w-72 overflow-hidden transition-all duration-500 ease-out origin-top"
+          className="absolute top-full mt-4 left-1/2 overflow-hidden transition-all duration-500 ease-out origin-top"
           style={{
-            maxHeight: isOpen ? `${apps.length * 56 + 16}px` : '0px',
+            width: `${IMG_WIDTH}px`,
+            transform: isOpen ? 'scaleY(1) translateX(-50%) translateY(0)' : 'scaleY(0.8) translateX(-50%) translateY(-10px)',
+            maxHeight: isOpen ? `${apps.length * 48 + 24}px` : '0px',
             opacity: isOpen ? 1 : 0,
-            transform: isOpen ? 'scaleY(1) translateY(0)' : 'scaleY(0.8) translateY(-10px)',
           }}
         >
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 p-2">
+          <div className="flex flex-col gap-1.5 p-1">
             {apps.map((app, i) => {
               const Icon = app.icon;
               return (
                 <a
                   key={app.name}
                   href={app.href}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl
-                             hover:bg-white/70 transition-all duration-200 group"
+                  title={app.desc}
+                  className={`app-menu-link flex items-center gap-2.5 px-3 py-2 rounded-lg bg-gradient-to-r ${app.color}
+                              shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.97]
+                              transition-all duration-200 no-underline`}
                   style={{
                     opacity: isOpen ? 1 : 0,
                     transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
-                    transition: `opacity 300ms ease ${i * 50 + 100}ms, transform 300ms ease ${i * 50 + 100}ms`,
+                    transition: `opacity 300ms ease ${i * 50 + 100}ms, transform 300ms ease ${i * 50 + 100}ms, box-shadow 200ms ease, scale 200ms ease`,
                   }}
                 >
-                  <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${app.color}
-                                   flex items-center justify-center shrink-0
-                                   group-hover:scale-110 transition-transform duration-200`}>
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-sm font-medium text-gray-800">{app.name}</span>
+                  <Icon style={{ width: 18, height: 18, color: 'white', strokeWidth: 2 }} />
+                  <span className="text-sm font-semibold text-white" style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>{app.name}</span>
                 </a>
               );
             })}
