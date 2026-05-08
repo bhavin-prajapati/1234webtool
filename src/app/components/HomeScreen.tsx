@@ -15,16 +15,17 @@ import {
 
 const IMG_WIDTH = 190;
 
+const isDev = process.env.NODE_ENV === 'development';
 const apps = [
-  { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: '/1234webtool/apps/notes.html', desc: 'Jot down quick notes and ideas' },
-  { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: '/1234webtool/apps/calculator.html', desc: 'Perform basic and scientific calculations' },
-  { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: '/1234webtool/apps/weather.html', desc: 'Check current weather conditions' },
-  { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: '/1234webtool/apps/todo.html', desc: 'Manage your tasks and to-do lists' },
-  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: '/1234webtool/apps/timer.html', desc: 'Set timers and stopwatches' },
-  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: '/1234webtool/apps/calendar.html', desc: 'View and manage your schedule' },
-  { name: 'Photos', icon: PhotoIcon, color: 'from-purple-400 to-purple-600', href: '/1234webtool/apps/photos.html', desc: 'Browse and organize your photos' },
-  { name: 'Settings', icon: WrenchScrewdriverIcon, color: 'from-gray-400 to-gray-600', href: '/1234webtool/apps/settings.html', desc: 'Configure app preferences' },
-  { name: 'Messages', icon: ChatBubbleBottomCenterTextIcon, color: 'from-green-400 to-green-500', href: '/1234webtool/apps/messages.html', desc: 'Send and receive messages' },
+  { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: `/1234webtool/apps/notes${isDev ? '' : '.html'}`, desc: 'Jot down quick notes and ideas' },
+  { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: `/1234webtool/apps/calculator${isDev ? '' : '.html'}`, desc: 'Perform basic and scientific calculations' },
+  { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: `/1234webtool/apps/weather${isDev ? '' : '.html'}`, desc: 'Check current weather conditions' },
+  { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: `/1234webtool/apps/todo${isDev ? '' : '.html'}`, desc: 'Manage your tasks and to-do lists' },
+  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches' },
+  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule' },
+  { name: 'Photos', icon: PhotoIcon, color: 'from-purple-400 to-purple-600', href: `/1234webtool/apps/photos${isDev ? '' : '.html'}`, desc: 'Browse and organize your photos' },
+  { name: 'Settings', icon: WrenchScrewdriverIcon, color: 'from-gray-400 to-gray-600', href: `/1234webtool/apps/settings${isDev ? '' : '.html'}`, desc: 'Configure app preferences' },
+  { name: 'Messages', icon: ChatBubbleBottomCenterTextIcon, color: 'from-green-400 to-green-500', href: `/1234webtool/apps/messages${isDev ? '' : '.html'}`, desc: 'Send and receive messages' },
 ];
 
 const HomeScreen = () => {
