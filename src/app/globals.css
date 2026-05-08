@@ -68,22 +68,27 @@ body {
   animation: none;
 }
 
-/* Rotating gradient background */
 @property --gradient-angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
-@keyframes gradient-rotate {
-  to {
-    --gradient-angle: 360deg;
-  }
+.animate-gradient-rotate {
+  background: -webkit-linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
+  background: -moz-linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
+  background: -o-linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
+  background: linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
+  -webkit-transition: --gradient-angle 0.5s ease-out;  
+  -moz-transition: --gradient-angle 0.5s ease-out;  
+  -o-transition: --gradient-angle 0.5s ease-out;  
+  transition: --gradient-angle 0.5s ease-out;  
 }
 
-.animate-gradient-rotate {
-  animation: gradient-rotate 8s linear infinite;
+.modern-box:hover {
+  --gradient-angle:180deg;
 }
+
 
 /* Force white link text in app menu */
 .app-menu-link,

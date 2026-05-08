@@ -43,12 +43,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center animate-gradient-rotate"
-      style={{
-        background: 'linear-gradient(var(--gradient-angle, 0deg), #2d2d2d, #a0a0a0, #d4d4d4, #a0a0a0, #2d2d2d)',
-        backgroundSize: '200% 200%',
-      }}
-    >
+    <div className={`min-h-screen flex items-center justify-center animate-gradient-rotate ${isOpen ? 'modern-box' : ''} transition-all duration-500`}>
       <div ref={menuRef} className="relative flex flex-col items-center">
         {/* Swiss Army Knife Button */}
         <button
