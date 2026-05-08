@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import "./hexagons.css";
 import "./weather.css";
 
 const geist = Geist({
@@ -11,7 +10,7 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: "1234webtool",
-  description: "A web-based tool for various applications",
+  description: "A collection of tools to enhance your productivity and organization.",
 };
 
 export default function RootLayout({
