@@ -53,7 +53,7 @@ const HomeScreen = () => {
           aria-label="Open app menu"
         >
           <Image
-            src="webtool.png"
+            src="/1234webtool/webtool.png"
             alt="Swiss Army Knife"
             width={190}
             height={62}
