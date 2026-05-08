@@ -1,4 +1,4 @@
-import Link from "next/link";
+"use client";
 
 export default function AppsLayout({
   children,
@@ -9,17 +9,16 @@ export default function AppsLayout({
     <div className="min-h-screen animate-gradient-rotate">
       <div className="block m-10 pt-10 top-4 left-4 z-50" 
            style={{ padding: '10px' }}>
-        <Link
-          href="/"
-          className="flex app-menu-link items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-800 shadow-md hover:shadow-lg no-underline"
-        >
+        <button onClick={() => window.history.back()}
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          >
           <span
-            className="text-sm font-semibold text-white"
+            className="flex app-menu-link items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-800 shadow-md hover:shadow-lg no-underline text-sm font-semibold text-white"
             style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
           >
             ← Back
           </span>
-        </Link>
+        </button>
       </div>
       <div className="pt-14">
         {children}
