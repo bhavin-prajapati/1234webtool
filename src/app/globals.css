@@ -73,25 +73,21 @@ body {
   animation: none;
 }
 
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+.moving-background {
+  background-image: url('/1234webtool/background.png');
+  background-repeat: repeat; /* Repeat horizontally */
+  /* Animation: name | duration | timing | iteration */
+  animation: slide 60s linear infinite;
 }
 
-.animate-gradient-rotate {
-  background: -webkit-linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
-  background: -moz-linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
-  background: -o-linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
-  background: linear-gradient(var(--gradient-angle, 0deg),#61adc6,#411b67);  
-  -webkit-transition: --gradient-angle 0.5s ease-out;  
-  -moz-transition: --gradient-angle 0.5s ease-out;  
-  -o-transition: --gradient-angle 0.5s ease-out;  
-  transition: --gradient-angle 0.5s ease-out;  
-}
-
-.modern-box:hover {
-  --gradient-angle:180deg;
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    /* Set this to the width of your background image for a seamless loop */
+    background-position: -626px -626px; 
+  }
 }
 
 

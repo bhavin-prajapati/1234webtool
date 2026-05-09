@@ -44,7 +44,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen flex items-center justify-center animate-gradient-rotate ${isOpen ? 'modern-box' : ''} transition-all duration-500`}>
+    <div className={`min-h-screen flex items-center justify-center moving-background transition-all`}>
       <div ref={menuRef} className="relative flex flex-col items-center">
         {/* Swiss Army Knife Button */}
         <button
