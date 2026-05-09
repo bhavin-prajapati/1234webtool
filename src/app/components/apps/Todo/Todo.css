@@ -15,9 +15,8 @@ body {
   justify-content: start;
   width: 45%;
   min-height: 600px;
-  background:  var(--background-rgb);
   text-align: center;
-  margin: 128px auto;
+  margin: 0 auto;
   border-radius: 10px;
   padding-bottom: 32px;
 }
@@ -96,11 +95,4 @@ h1 {
   align-items: center;
   font-size: 24px;
   cursor: pointer;
-}
-
-.seperator {
-  height: 1px;
-  width: 80%;
-  align-self: center;
-  background-color: black;
 }

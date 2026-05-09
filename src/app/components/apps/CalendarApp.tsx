@@ -95,9 +95,8 @@ export default function CalendarApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50">
       <div className="max-w-6xl mx-auto px-8 py-8">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-6">Calendar</h1>
       <div style={{ height: '78vh' }}>
         <Calendar
           localizer={localizer}
@@ -105,7 +104,7 @@ export default function CalendarApp() {
           selectable
           onSelectSlot={handleSelectSlot}
           onSelectEvent={handleSelectEvent as (event: object) => void}
-          style={{ height: '100%', background: 'white', borderRadius: '12px', padding: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
+          style={{ maxWidth: '800px', maxHeight: '800px', height: '100%', background: 'white', borderRadius: '12px', padding: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
         />
       </div>
       </div>

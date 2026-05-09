@@ -52,9 +52,7 @@ function TodoApp() {
   const sortedTodos = [...todos].sort((a, b) => b.important === a.important ? 0 : b.important ? -1 : 1)
   return (
     <div className="todo-app">
-      <h1>Todo List</h1>
       <TodoForm addTodo={addTodo} />
-      <hr className="seperator" />
       {sortedTodos.map((todo) => {
         return (
           <TodoItem removeTodo={removeTodo} completeTodo={completeTodo} importantTodo={importantTodo} todo={todo} key={todo.id} />
