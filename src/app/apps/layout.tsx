@@ -6,7 +6,7 @@ export default function AppsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen animate-gradient-rotate">
+    <div className="min-h-screen moving-background">
       <div className="block m-10 pt-10 top-4 left-4 z-50" 
            style={{ padding: '10px' }}>
         <button onClick={() => window.history.back()}
