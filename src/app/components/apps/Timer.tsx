@@ -3,16 +3,16 @@ import React from 'react';
 import { useTimer, useTime } from 'react-timer-hook';
 
 function Digit({ value, title }: { value: number; title: string }) {
-  const digits = value.toString().padStart(4, '0');
+  const digits = value.toString().padStart(2, '0');
   return (
     <div className="flex flex-col items-center mx-[5px]">
-      <span className="text-xs mb-[5px] text-[#404549]">{title}</span>
+      <span className="text-xs mb-[5px] white">{title}</span>
       <div className="flex flex-row">
         <span className="relative flex text-[30px] bg-[#404549] rounded-[5px] py-[10px] px-[12px] text-white mr-[2px] after:absolute after:left-0 after:right-0 after:top-1/2 after:h-[2px] after:bg-[#232323] after:opacity-40">
-          {digits[2]}
+          {digits[0]}
         </span>
         <span className="relative flex text-[30px] bg-[#404549] rounded-[5px] py-[10px] px-[12px] text-white after:absolute after:left-0 after:right-0 after:top-1/2 after:h-[2px] after:bg-[#232323] after:opacity-40">
-          {digits[3]}
+          {digits[1]}
         </span>
       </div>
     </div>
@@ -53,6 +53,7 @@ function UseTimerSection() {
   time.setSeconds(time.getSeconds() + 600); // 10 minutes
 
   const {
+    milliseconds,
     seconds,
     minutes,
     hours,
@@ -61,13 +62,13 @@ function UseTimerSection() {
     pause,
     resume,
     restart,
-  } = useTimer({ expiryTimestamp: time, onExpire: () => console.log('Timer expired!') });
+  } = useTimer({ expiryTimestamp: time, autoStart: false, interval: 1, onExpire: () => console.log('Timer expired!') });
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center white">
       <h2 className="text-xl font-bold mt-5 mb-4">Timer</h2>
       <br />
-      <div className="flex flex-row items-center mb-[30px]">
+      <div className="flex flex-row items-center mb-[30px] white">
         <Digit value={days} title="DAYS" />
         <SeparatorDots />
         <Digit value={hours} title="HOURS" />
@@ -75,6 +76,8 @@ function UseTimerSection() {
         <Digit value={minutes} title="MINUTES" />
         <SeparatorDots />
         <Digit value={seconds} title="SECONDS" />
+        <SeparatorDots />
+        <Digit value={milliseconds} title="MILLISECONDS" />
       </div>
 
       <div className="flex">
@@ -98,9 +101,9 @@ function UseTimerSection() {
 
 function TimerApp() {
   return (
-    <div className="min-h-screen bg-white font-[Arial,sans-serif] text-[#404549] flex flex-col items-center justify-center gap-8">
+    <div className="min-h-screen bg-white font-[Arial,sans-serif] bg-black white flex flex-col items-center justify-center gap-8">
       <UseTimeSection />
-      <hr className="w-full max-w-md border-dashed border-[#404549] border-t-2" />
+      <br />
       <UseTimerSection />
     </div>
   );
