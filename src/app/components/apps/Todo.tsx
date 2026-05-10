@@ -1,8 +1,10 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Todo/Todo.css";
 import TodoForm from "./Todo/TodoForm";
 import TodoItem from "./Todo/TodoItem";
+
+const STORAGE_KEY = 'todos';
 
 type Todo = {
   id: number;
@@ -13,6 +15,13 @@ type Todo = {
 
 function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      setTodos(JSON.parse(saved));
+    }
+  }, []);
 
   const addTodo = (text: string) => {
     let id = 1;
@@ -49,6 +58,10 @@ function TodoApp() {
 
     setTodos(updatedTodos)
   }
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
+
   const sortedTodos = [...todos].sort((a, b) => b.important === a.important ? 0 : b.important ? -1 : 1)
   return (
     <div className="todo-app">
