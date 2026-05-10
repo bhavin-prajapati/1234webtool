@@ -8,9 +8,13 @@ import {
   ClipboardDocumentListIcon,
   ClockIcon,
   CalendarDaysIcon,
-  PhotoIcon,
-  WrenchScrewdriverIcon,
-  ChatBubbleBottomCenterTextIcon,
+  ArrowsRightLeftIcon,
+  SwatchIcon,
+  CodeBracketIcon,
+  QrCodeIcon,
+  KeyIcon,
+  ChatBubbleLeftIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 
 const IMG_WIDTH = 190;
@@ -23,9 +27,13 @@ const apps = [
   { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: `/1234webtool/apps/todo${isDev ? '' : '.html'}`, desc: 'Manage your tasks and to-do lists' },
   { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches' },
   { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule' },
-  { name: 'Photos', icon: PhotoIcon, color: 'from-purple-400 to-purple-600', href: `/1234webtool/apps/photos${isDev ? '' : '.html'}`, desc: 'Browse and organize your photos' },
-  { name: 'Settings', icon: WrenchScrewdriverIcon, color: 'from-gray-400 to-gray-600', href: `/1234webtool/apps/settings${isDev ? '' : '.html'}`, desc: 'Configure app preferences' },
-  { name: 'Messages', icon: ChatBubbleBottomCenterTextIcon, color: 'from-green-400 to-green-500', href: `/1234webtool/apps/messages${isDev ? '' : '.html'}`, desc: 'Send and receive messages' },
+  { name: 'Unit Converter', icon: ArrowsRightLeftIcon, color: 'from-cyan-400 to-cyan-600', href: `/1234webtool/apps/unit-converter${isDev ? '' : '.html'}`, desc: 'Convert between units of measurement' },
+  { name: 'Color Picker', icon: SwatchIcon, color: 'from-pink-400 to-rose-500', href: `/1234webtool/apps/color-picker${isDev ? '' : '.html'}`, desc: 'Pick colors and generate palettes' },
+  { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/1234webtool/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
+  { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/1234webtool/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
+  { name: 'Password Gen', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/1234webtool/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
+  { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/1234webtool/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
+  { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/1234webtool/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
 ];
 
 const HomeScreen = () => {
