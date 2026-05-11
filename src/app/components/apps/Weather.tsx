@@ -17,6 +17,7 @@ interface ForecastItem {
 }
 
 const API_KEY = '9df93e2e16bb4e07b2f9ff45de8ec8c3';
+const STORAGE_KEY = 'weather-last-city';
 
 function Weather() {
   const [searchInput, setSearchInput] = useState("");
@@ -62,6 +63,9 @@ function Weather() {
       );
       const data = await response.json();
       setWeatherData(data);
+      if (data.name) {
+        localStorage.setItem(STORAGE_KEY, data.name);
+      }
 
       const forecastResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=imperial`
@@ -80,13 +84,15 @@ function Weather() {
   }, []);
 
   useEffect(() => {
-    if ("geolocation" in navigator) {
+    const savedCity = localStorage.getItem(STORAGE_KEY);
+    if (savedCity) {
+      fetchWeatherByCity(savedCity);
+    } else if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           fetchWeatherByCoords(position.coords.latitude, position.coords.longitude);
         },
         () => {
-          // Geolocation denied or unavailable — fall back to default city
           fetchWeatherByCity("london");
         }
       );
