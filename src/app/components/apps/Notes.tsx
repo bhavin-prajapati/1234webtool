@@ -16,7 +16,7 @@ const Notes = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="pt-16 px-4">
+      <div className="pt-1 px-4">
         <BlockNoteView
           editor={editor}
           onChange={() => {
