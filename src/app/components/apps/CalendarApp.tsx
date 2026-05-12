@@ -76,12 +76,6 @@ export default function CalendarApp() {
     openModal('', toLocalDatetimeString(slot.start), toLocalDatetimeString(slot.end), slot.action === 'click');
   }, []);
 
-  const openModalFromButton = useCallback(() => {
-    const now = new Date();
-    const oneHourLater = new Date(now.getTime() + 60 * 60 * 1000);
-    openModal('', toLocalDatetimeString(now), toLocalDatetimeString(oneHourLater), false);
-  }, []);
-
   const closeModal = () => {
     dialogRef.current?.close();
     setNewTitle('');
