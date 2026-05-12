@@ -59,6 +59,13 @@ const HomeScreen = () => {
           );
         })}
       </div>
+      <a
+        href={`/1234webtool/apps/privacy-policy${isDev ? '' : '.html'}`}
+        className="absolute bottom-4 text-sm text-white/70 hover:text-white transition-colors no-underline"
+        style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+      >
+        Privacy Policy
+      </a>
     </div>
   );
 };
