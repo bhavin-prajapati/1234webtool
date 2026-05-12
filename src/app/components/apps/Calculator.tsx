@@ -10,7 +10,7 @@ const CalculatorApp = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-black">
       <Calculator />
     </div>
   );

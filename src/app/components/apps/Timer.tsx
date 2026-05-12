@@ -35,8 +35,6 @@ function UseTimeSection() {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-xl font-bold mt-5 mb-4">Clock</h2>
-      <br />
       <div className="flex flex-row items-center mb-[30px]">
         <Digit value={hours} title="HOURS" />
         <SeparatorDots />
@@ -66,8 +64,6 @@ function UseTimerSection() {
 
   return (
     <div className="flex flex-col items-center white">
-      <h2 className="text-xl font-bold mt-5 mb-4">Timer</h2>
-      <br />
       <div className="flex flex-row items-center mb-[30px] white">
         <Digit value={days} title="DAYS" />
         <SeparatorDots />
@@ -101,7 +97,7 @@ function UseTimerSection() {
 
 function TimerApp() {
   return (
-    <div className="min-h-screen bg-white font-[Arial,sans-serif] bg-black white flex flex-col items-center justify-center gap-8">
+    <div className="min-h-screen font-[Arial,sans-serif] white flex flex-col items-center">
       <UseTimeSection />
       <br />
       <UseTimerSection />

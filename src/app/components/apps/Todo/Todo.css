@@ -1,4 +1,5 @@
-* {
+.todo-app,
+.todo-app * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -24,12 +25,16 @@ body {
 .important-btn {
   margin-right: 5px;
   width: 20px;
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 49%;
   padding: 1px;
   border-color: white;
   color: white;
   background: transparent;
+  height: 20px;
+  font-size: large;
+  font-weight: bolder;
+  line-height: initial;
 }
 
 h1 {

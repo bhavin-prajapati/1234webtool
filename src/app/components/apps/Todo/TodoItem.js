@@ -8,7 +8,9 @@ export default function TodoItem(props) {
         <div className={todo.completed ? "todo-row complete" : "todo-row"} style={todo.important ? { background: "orange" } : {}}>
             {todo.text}
             <div className="iconsContainer">
-                <button onClick={() => importantTodo(todo.id)} className="important-btn">!</button>
+                <div className="important-btn">
+                    <button onClick={() => importantTodo(todo.id)} >!</button>
+                </div>
                 <RiCloseCircleLine style={{ marginRight: 5 }} onClick={() => removeTodo(todo.id)}/>
                 <BiCheckCircle onClick={() => completeTodo(todo.id)}/>
             </div>

@@ -15,7 +15,7 @@ const Notes = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <div className="pt-16 px-4">
         <BlockNoteView
           editor={editor}

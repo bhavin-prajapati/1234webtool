@@ -7,8 +7,7 @@ export default function AppsLayout({
 }>) {
   return (
     <div className="min-h-screen moving-background">
-      <div className="block m-10 pt-10 top-4 left-4 z-50" 
-           style={{ padding: '10px' }}>
+      <div className="absolute top-4 left-4 z-50">
         <button onClick={() => window.history.back()}
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           >
