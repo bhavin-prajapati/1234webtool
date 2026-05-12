@@ -114,17 +114,8 @@ export default function CalendarApp() {
   }, [events]);
 
   return (
-    <div className="bg-gray-50">
+    <div>
       <div className="max-w-6xl mx-auto px-8 py-8">
-      <div className="flex items-center justify-between mb-4" style={{ maxWidth: '800px' }}>
-        <h1 className="text-xl font-semibold text-gray-800">Calendar</h1>
-        <button
-          className="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors font-medium text-sm"
-          onClick={openModalFromButton}
-        >
-          + New Event
-        </button>
-      </div>
       <div style={{ height: '74vh' }}>
         <Calendar
           localizer={localizer}

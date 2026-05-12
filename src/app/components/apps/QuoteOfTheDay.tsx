@@ -75,8 +75,6 @@ export default function QuoteOfTheDay() {
   return (
     <div className="flex justify-center px-4 pb-10">
       <div className="w-full max-w-lg">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Quote of the Day</h1>
-
         {/* Quote card */}
         <div className={`bg-gradient-to-br ${bgColors[bgIndex]} rounded-2xl shadow-lg p-8 mb-6 transition-all duration-300 ${fade ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
           <div className="text-white text-5xl mb-4 opacity-50">&ldquo;</div>

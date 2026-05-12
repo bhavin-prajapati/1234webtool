@@ -52,8 +52,6 @@ export default function JsonFormatter() {
   return (
     <div className="flex justify-center px-4 pb-10">
       <div className="w-full max-w-2xl">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">JSON Formatter</h1>
-
         <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4">
           {/* Controls */}
           <div className="flex flex-wrap gap-2 items-center">

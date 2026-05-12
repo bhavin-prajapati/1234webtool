@@ -47,8 +47,6 @@ export default function WordCounter() {
   return (
     <div className="flex justify-center px-4 pb-10">
       <div className="w-full max-w-2xl">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Word Counter</h1>
-
         <div className="bg-white rounded-2xl shadow-lg p-6 space-y-4">
           {/* Stats grid */}
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
