@@ -26,6 +26,7 @@
     "react": "^19.0.0",
     "react-big-calendar": "^1.19.4",
     "react-dom": "^19.0.0",
+    "react-hook-speech-to-text": "^0.8.0",
     "react-open-weather": "^1.3.8",
     "react-timer-hook": "^4.0.5",
     "react-todo-component": "^2.2.1",
