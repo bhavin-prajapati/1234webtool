@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const quotes = [
   { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
@@ -100,10 +100,14 @@ const bgColors = [
 ];
 
 export default function QuoteOfTheDay() {
-  const [index, setIndex] = useState(() => Math.floor(Math.random() * quotes.length));
+  const [index, setIndex] = useState(0);
   const [bgIndex, setBgIndex] = useState(0);
   const [copied, setCopied] = useState(false);
   const [fade, setFade] = useState(false);
+
+  useEffect(() => {
+    setIndex(Math.floor(Math.random() * quotes.length));
+  }, []);
 
   const quote = quotes[index];
 
