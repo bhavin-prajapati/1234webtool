@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   PencilSquareIcon,
   CalculatorIcon,
@@ -15,6 +15,8 @@ import {
   ChatBubbleLeftIcon,
   DocumentTextIcon,
   BellAlertIcon,
+  ArrowsPointingOutIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -36,21 +38,197 @@ const apps = [
 ];
 
 const HomeScreen = () => {
+  const [isRearranging, setIsRearranging] = useState(false);
+  const [appsList, setAppsList] = useState(apps);
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+  const [dropTargetIndex, setDropTargetIndex] = useState<number | null>(null);
+
+  // Load custom app order from localStorage
+  useEffect(() => {
+    const savedOrder = localStorage.getItem('appOrder');
+    if (savedOrder) {
+      try {
+        const appNames = JSON.parse(savedOrder);
+        const orderedApps = appNames
+          .map((name: string) => apps.find(app => app.name === name))
+          .filter((app) => app !== undefined) as typeof apps;
+        
+        // Add any new apps that weren't in the saved order
+        const savedNames = new Set(appNames);
+        const newApps = apps.filter(app => !savedNames.has(app.name));
+        
+        setAppsList([...orderedApps, ...newApps]);
+      } catch (e) {
+        setAppsList(apps);
+      }
+    }
+  }, []);
+
+  const handleDragStart = (index: number) => {
+    setDraggedItem(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    // Only set drop target if it's not the dragged item
+    if (draggedItem !== null && draggedItem !== index) {
+      setDropTargetIndex(index);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault();
+    
+    if (draggedItem === null || draggedItem === dropIndex) {
+      setDraggedItem(null);
+      setDropTargetIndex(null);
+      return;
+    }
+
+    const newList = [...appsList];
+    const draggedItemContent = newList[draggedItem];
+    
+    // Remove the dragged item
+    newList.splice(draggedItem, 1);
+    
+    // Insert at the drop position
+    newList.splice(dropIndex, 0, draggedItemContent);
+
+    setAppsList(newList);
+    
+    // Save new order to localStorage as ordered list of app names
+    const appNames = newList.map(app => app.name);
+    localStorage.setItem('appOrder', JSON.stringify(appNames));
+
+    setDraggedItem(null);
+    setDropTargetIndex(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedItem(null);
+    setDropTargetIndex(null);
+  };
+
+  const resetOrder = () => {
+    setAppsList(apps);
+    localStorage.removeItem('appOrder');
+  };
+
+  const getDisplayList = () => {
+    if (draggedItem === null || dropTargetIndex === null) {
+      return appsList.map((app, originalIndex) => ({ type: 'app' as const, app, originalIndex }));
+    }
+
+    const displayItems = appsList
+      .map((app, originalIndex) => ({ type: 'app' as const, app, originalIndex }))
+      .filter(item => item.originalIndex !== draggedItem);
+
+    displayItems.splice(dropTargetIndex, 0, { type: 'placeholder' as const });
+    return displayItems;
+  };
+
+  const displayList = getDisplayList();
+
   return (
-    <div className="min-h-screen moving-background flex items-center justify-center p-8">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl w-full">
-        {apps.map((app) => {
+    <div className="min-h-screen moving-background flex flex-col items-center justify-center p-8 relative">
+      {/* Rearrange Button */}
+      <div className="absolute top-4 left-4 flex gap-2 z-50">
+        {isRearranging && (
+          <button
+            onClick={resetOrder}
+            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            title="Reset to default order"
+          >
+            <span
+              className="flex app-menu-link items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-800 shadow-md hover:shadow-lg no-underline text-sm font-semibold text-white"
+              style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+            >
+              Reset
+            </span>
+          </button>
+        )}
+        <button
+          onClick={() => setIsRearranging(!isRearranging)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          title={isRearranging ? 'Done rearranging' : 'Rearrange app tiles'}
+        >
+          <span
+            className="flex app-menu-link items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-800 shadow-md hover:shadow-lg no-underline text-sm font-semibold text-white"
+            style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+          >
+            {isRearranging ? (
+              <>
+                <XMarkIcon style={{ width: 20, height: 20 }} />
+                Done
+              </>
+            ) : (
+              <>
+                <ArrowsPointingOutIcon style={{ width: 20, height: 20 }} />
+                Rearrange
+              </>
+            )}
+          </span>
+        </button>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-4 max-w-4xl w-full">
+        {displayList.map((item, displayIndex) => {
+          if (item.type === 'placeholder') {
+            return (
+              <div
+                key={`placeholder-${displayIndex}`}
+                onDragOver={(e) => handleDragOver(e, displayIndex)}
+                onDrop={(e) => handleDrop(e, displayIndex)}
+                className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-4 border-dashed border-white/50 bg-white/10 transition-all duration-200 w-32 h-32"
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                <div className="w-8 h-8 border-2 border-white/50 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-white/50 rounded-full"></div>
+                </div>
+                <span className="text-xs text-white/70 text-center">Drop here</span>
+              </div>
+            );
+          }
+
+          const { app, originalIndex } = item;
           const Icon = app.icon;
-          return (
+          const isDragged = draggedItem === originalIndex;
+          
+          return isRearranging ? (
+            <div
+              key={`${app.name}-${originalIndex}`}
+              draggable={!isDragged}
+              onDragStart={() => handleDragStart(originalIndex)}
+              onDragOver={(e) => handleDragOver(e, displayIndex)}
+              onDrop={(e) => handleDrop(e, displayIndex)}
+              onDragEnd={handleDragEnd}
+              className={`flex flex-col items-center justify-center gap-2 p-4 rounded-xl transition-all duration-200 w-32 h-32 cursor-move
+                          ${isDragged ? 'opacity-0' : ''}
+                          bg-gradient-to-br ${app.color} shadow-md hover:shadow-xl`}
+              style={{ fontFamily: 'Arial, sans-serif' }}
+            >
+              {!isDragged && (
+                <>
+                  <Icon style={{ width: 32, height: 32, color: 'white', strokeWidth: 1.5 }} />
+                  <span
+                    className="text-sm font-semibold text-white text-center leading-tight"
+                    style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+                  >
+                    {app.name}
+                  </span>
+                </>
+              )}
+            </div>
+          ) : (
             <a
-              key={app.name}
+              key={`${app.name}-${originalIndex}`}
               href={app.href}
               title={app.desc}
               className={`app-menu-link flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-gradient-to-br ${app.color}
                           shadow-md hover:shadow-xl hover:scale-105 active:scale-95
-                          transition-all duration-200 no-underline aspect-square`}
+                          transition-all duration-200 no-underline w-32 h-32`}
             >
-<Icon style={{ width: 32, height: 32, color: 'white', strokeWidth: 1.5 }} />
+              <Icon style={{ width: 32, height: 32, color: 'white', strokeWidth: 1.5 }} />
               <span
                 className="text-sm font-semibold text-white text-center leading-tight"
                 style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
