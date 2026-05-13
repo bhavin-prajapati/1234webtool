@@ -37,6 +37,11 @@ const apps = [
   { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/1234webtool/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
 ];
 
+type AppItem = (typeof apps)[number];
+type DisplayItem =
+  | { type: 'app'; app: AppItem; originalIndex: number }
+  | { type: 'placeholder' };
+
 const HomeScreen = () => {
   const [isRearranging, setIsRearranging] = useState(false);
   const [appsList, setAppsList] = useState(apps);
@@ -48,17 +53,17 @@ const HomeScreen = () => {
     const savedOrder = localStorage.getItem('appOrder');
     if (savedOrder) {
       try {
-        const appNames = JSON.parse(savedOrder);
+        const appNames = JSON.parse(savedOrder) as string[];
         const orderedApps = appNames
-          .map((name: string) => apps.find(app => app.name === name))
-          .filter((app: any) => app !== undefined) as typeof apps;
+          .map((name) => apps.find(app => app.name === name))
+          .filter((app): app is AppItem => app !== undefined);
         
         // Add any new apps that weren't in the saved order
         const savedNames = new Set(appNames);
         const newApps = apps.filter(app => !savedNames.has(app.name));
         
         setAppsList([...orderedApps, ...newApps]);
-      } catch (e) {
+      } catch {
         setAppsList(apps);
       }
     }
@@ -114,16 +119,16 @@ const HomeScreen = () => {
     localStorage.removeItem('appOrder');
   };
 
-  const getDisplayList = () => {
+  const getDisplayList = (): DisplayItem[] => {
     if (draggedItem === null || dropTargetIndex === null) {
       return appsList.map((app, originalIndex) => ({ type: 'app' as const, app, originalIndex }));
     }
 
-    const displayItems = appsList
+    const displayItems: DisplayItem[] = appsList
       .map((app, originalIndex) => ({ type: 'app' as const, app, originalIndex }))
-      .filter(item => item.originalIndex !== draggedItem);
+      .filter((item) => item.type === 'app' && item.originalIndex !== draggedItem);
 
-    displayItems.splice(dropTargetIndex, 0, { type: 'placeholder' as const });
+    displayItems.splice(dropTargetIndex, 0, { type: 'placeholder' });
     return displayItems;
   };
 
