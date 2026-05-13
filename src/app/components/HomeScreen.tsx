@@ -17,6 +17,7 @@ import {
   BellAlertIcon,
   ArrowsPointingOutIcon,
   XMarkIcon,
+  MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -30,6 +31,7 @@ const apps = [
   { name: 'Unit Converter', icon: ArrowsRightLeftIcon, color: 'from-cyan-400 to-cyan-600', href: `/1234webtool/apps/unit-converter${isDev ? '' : '.html'}`, desc: 'Convert between units of measurement' },
   { name: 'Color Picker', icon: SwatchIcon, color: 'from-pink-400 to-rose-500', href: `/1234webtool/apps/color-picker${isDev ? '' : '.html'}`, desc: 'Pick colors and generate palettes' },
   { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/1234webtool/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
+  { name: 'Regex Tester', icon: MagnifyingGlassIcon, color: 'from-purple-400 to-purple-600', href: `/1234webtool/apps/regex-tester${isDev ? '' : '.html'}`, desc: 'Test and validate regular expressions' },
   { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/1234webtool/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
   { name: 'Password Gen', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/1234webtool/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
   { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/1234webtool/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
