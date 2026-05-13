@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import ReminderNotifierWrapper from "./components/ReminderNotifierWrapper";
 import "./globals.css";
 import "./weather.css";
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.variable} font-sans`}>
         {children}
+        <ReminderNotifierWrapper />
       </body>
     </html>
   );

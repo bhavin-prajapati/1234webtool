@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reminder!</title>
+  <link rel="stylesheet" href="notification.css" />
+</head>
+<body>
+  <div class="modal-container">
+    <div class="modal-icon">⏰</div>
+    <h1 class="modal-title">Reminder</h1>
+    <div id="message" class="modal-message">Loading...</div>
+    <div class="modal-actions">
+      <button id="snooze-btn" class="btn btn-snooze" title="Snooze for 10 minutes">😴 Snooze (10 min)</button>
+      <button id="dismiss-btn" class="btn btn-dismiss">✓ Dismiss</button>
+    </div>
+  </div>
+
+  <script src="notification.js"></script>
+</body>
+</html>

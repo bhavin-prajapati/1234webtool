@@ -1,10 +1,31 @@
 {
   "name": "1234WebTool Chrome Extension",
   "description": "A collection of tools to enhance your productivity and organization.",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
+  "permissions": [
+    "alarms",
+    "storage",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_popup": "index.html",
     "default_icon": "logo.png"
-  }
+  },
+  "icons": {
+    "16": "logo_small.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://storage.googleapis.com/1234webtool/*"],
+      "js": ["content-script.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ]
 }
