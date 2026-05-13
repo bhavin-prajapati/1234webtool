@@ -51,7 +51,7 @@ const HomeScreen = () => {
         const appNames = JSON.parse(savedOrder);
         const orderedApps = appNames
           .map((name: string) => apps.find(app => app.name === name))
-          .filter((app) => app !== undefined) as typeof apps;
+          .filter((app: any) => app !== undefined) as typeof apps;
         
         // Add any new apps that weren't in the saved order
         const savedNames = new Set(appNames);

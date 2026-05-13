@@ -62,7 +62,7 @@ export default function QrCodeGenerator() {
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full h-24 p-3 rounded-lg border border-gray-200 text-gray-800 bg-gray-50 text-sm resize-y"
+              className="w-full h-12 p-3 rounded-lg border border-gray-200 text-gray-800 bg-gray-50 text-sm resize-y"
               placeholder="Enter text or URL..."
             />
           </div>

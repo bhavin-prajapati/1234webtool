@@ -109,7 +109,7 @@ export default function CalendarApp() {
 
   return (
     <div>
-      <div className="max-w-6xl mx-auto px-8 py-8">
+      <div className="max-w-6xl mx-auto">
       <div style={{ height: '74vh' }}>
         <Calendar
           localizer={localizer}
