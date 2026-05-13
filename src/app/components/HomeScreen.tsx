@@ -63,10 +63,33 @@ const HomeScreen = () => {
       </div>
       <a
         href={`/1234webtool/apps/privacy-policy${isDev ? '' : '.html'}`}
-        className="absolute bottom-4 text-sm text-white/70 hover:text-white transition-colors no-underline"
+        className="absolute bottom-4 left-4 text-sm text-white/70 hover:text-white transition-colors no-underline"
         style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
       >
         Privacy Policy
+      </a>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://1234webtool.com" target="_blank" rel="noopener noreferrer" title="Share on Facebook" className="text-white/70 hover:text-white transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://1234webtool.com&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on X" className="text-white/70 hover:text-white transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://1234webtool.com" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" className="text-white/70 hover:text-white transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://www.reddit.com/submit?url=https://1234webtool.com&title=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on Reddit" className="text-white/70 hover:text-white transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm6.066 13.98c.04.225.06.454.06.687 0 3.508-4.088 6.353-9.126 6.353S-.126 18.175-.126 14.667c0-.233.02-.462.06-.687a1.755 1.755 0 01-.744-1.43 1.76 1.76 0 011.76-1.76c.452 0 .862.175 1.17.46 1.155-.786 2.744-1.293 4.508-1.353l.893-4.195a.37.37 0 01.443-.283l2.966.63a1.252 1.252 0 012.37.53 1.252 1.252 0 01-1.25 1.252 1.252 1.252 0 01-1.24-1.105l-2.64-.562-.795 3.73c1.735.07 3.293.577 4.428 1.354a1.75 1.75 0 011.17-.46 1.76 1.76 0 011.76 1.76c0 .593-.296 1.118-.744 1.43zm-11.28.473c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25-.56-1.25-1.25-1.25-1.25.56-1.25 1.25zm7.23 3.193c-.78.78-2.28 1.04-3.02 1.04s-2.24-.26-3.02-1.04a.318.318 0 010-.45.318.318 0 01.45 0c.49.49 1.54.69 2.57.69s2.08-.2 2.57-.69a.318.318 0 01.45 0 .318.318 0 010 .45zm-.2-1.943c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+        </a>
+      </div>
+      <a
+        href="https://paypal.me/1234WebTool?country.x=CA&locale.x=en_US"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-4 right-4 text-sm text-white/70 hover:text-white transition-colors no-underline"
+        style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+      >
+        HELP KEEP US AD FREE!
       </a>
     </div>
   );

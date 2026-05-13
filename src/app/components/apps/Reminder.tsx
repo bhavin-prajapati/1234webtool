@@ -81,6 +81,7 @@ function setLocalReminders(reminders: Record<string, ReminderItem>) {
 }
 
 // ─── Sound ──────────────────────────────────────────────────────────
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 function playNotificationSound() {
   try {
     const ctx = new AudioContext();
@@ -287,6 +288,7 @@ export default function Reminder() {
   };
 
   // ─── Snooze (10 min) ─────────────────────────────────────────────
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const handleSnooze = async (id: string) => {
     if (isConnected) {
       try {
@@ -394,7 +396,7 @@ export default function Reminder() {
           <div
             ref={editorRef}
             contentEditable
-            className="min-h-[80px] max-h-[180px] overflow-y-auto p-3 border border-gray-200 border-t-0 rounded-b-lg text-sm leading-relaxed outline-none focus:border-purple-500 bg-white"
+            className="min-h-[80px] max-h-[180px] overflow-y-auto p-3 border border-gray-200 border-t-0 rounded-b-lg text-sm text-black leading-relaxed outline-none focus:border-purple-500 bg-white"
             style={{ wordBreak: 'break-word' }}
             data-placeholder="Type your reminder message..."
             onFocus={(e) => {
@@ -407,7 +409,7 @@ export default function Reminder() {
           <select
             value={delayMinutes}
             onChange={(e) => setDelayMinutes(Number(e.target.value))}
-            className="w-full py-2.5 px-3 border border-gray-200 rounded-lg text-sm bg-white outline-none focus:border-purple-500 cursor-pointer"
+            className="w-full py-2.5 px-3 border border-gray-200 rounded-lg text-sm text-black bg-white outline-none focus:border-purple-500 cursor-pointer"
           >
             {TIME_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>

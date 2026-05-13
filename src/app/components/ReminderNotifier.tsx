@@ -120,12 +120,9 @@ export default function ReminderNotifier() {
   if (!fired) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div
-        className="bg-white rounded-2xl shadow-2xl p-7 max-w-md w-full mx-4 text-center"
-        style={{ animation: 'reminderSlideIn 0.3s ease-out' }}
-      >
-        <div className="text-5xl mb-2" style={{ animation: 'reminderPulse 1.5s ease-in-out infinite' }}>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
+      <div className="bg-white rounded-2xl shadow-2xl p-7 max-w-md w-full mx-4 text-center">
+        <div className="text-5xl mb-2">
           ⏰
         </div>
         <h2 className="text-xl font-bold text-gray-800 mb-4">Reminder</h2>
@@ -148,16 +145,6 @@ export default function ReminderNotifier() {
           </button>
         </div>
       </div>
-      <style>{`
-        @keyframes reminderSlideIn {
-          from { opacity: 0; transform: translateY(-20px) scale(0.95); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes reminderPulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.15); }
-        }
-      `}</style>
     </div>
   );
 }
