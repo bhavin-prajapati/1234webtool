@@ -6,7 +6,7 @@ export default function AppsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen moving-background">
+    <div className="min-h-screen moving-background h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-stone-100 [&::-webkit-scrollbar-thumb]:bg-stone-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
       <div className="absolute top-4 left-4 z-50">
         <button onClick={() => window.history.back()}
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}

@@ -33,7 +33,7 @@ const apps = [
   { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/1234webtool/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
   { name: 'Regex Tester', icon: MagnifyingGlassIcon, color: 'from-purple-400 to-purple-600', href: `/1234webtool/apps/regex-tester${isDev ? '' : '.html'}`, desc: 'Test and validate regular expressions' },
   { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/1234webtool/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
-  { name: 'Password Gen', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/1234webtool/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
+  { name: 'Password Generator', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/1234webtool/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
   { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/1234webtool/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
   { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/1234webtool/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
   { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/1234webtool/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
