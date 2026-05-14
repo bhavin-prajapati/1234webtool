@@ -139,7 +139,7 @@ const HomeScreen = () => {
   const displayList = getDisplayList();
 
   return (
-    <div className="min-h-screen moving-background flex flex-col items-center justify-center p-8 relative">
+    <div className="min-h-screen moving-background flex flex-col items-center justify-center px-8 py-16 relative">
       {/* Rearrange Button */}
       <div className="absolute top-4 left-4 flex gap-2 z-50">
         {isRearranging && (
