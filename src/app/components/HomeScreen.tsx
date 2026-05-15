@@ -13,6 +13,7 @@ import {
   QrCodeIcon,
   KeyIcon,
   ChatBubbleLeftIcon,
+  AcademicCapIcon,
   DocumentTextIcon,
   BellAlertIcon,
   ArrowsPointingOutIcon,
@@ -25,6 +26,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const apps = [
   { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: `/1234webtool/apps/notes${isDev ? '' : '.html'}`, desc: 'Jot down quick notes and ideas' },
   { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: `/1234webtool/apps/calculator${isDev ? '' : '.html'}`, desc: 'Perform basic and scientific calculations' },
+  { name: 'Formulas', icon: AcademicCapIcon, color: 'from-indigo-500 to-violet-600', href: `/1234webtool/apps/formulas${isDev ? '' : '.html'}`, desc: 'Reference common math formulas with live rendering' },
   { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: `/1234webtool/apps/weather${isDev ? '' : '.html'}`, desc: 'Check current weather conditions' },
   { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: `/1234webtool/apps/todo${isDev ? '' : '.html'}`, desc: 'Manage your tasks and to-do lists' },
   { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches' },
