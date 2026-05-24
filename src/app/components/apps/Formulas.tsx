@@ -13,6 +13,66 @@ type Formula = {
 
 const formulas: Formula[] = [
     {
+        title: 'Pi',
+        latex: '\\pi',
+        description: 'The ratio of a circle\'s circumference to its diameter. Approximately equal to 3.141592653589793',
+        category: 'Constants',
+    },
+    {
+        title: 'Euler\'s Number',
+        latex: 'e',
+        description: 'The base of the natural logarithm, approximately equal to 2.718281828459045',
+        category: 'Constants',
+    },
+    {
+        title: 'Golden Ratio',
+        latex: '\\phi',
+        description: 'The golden ratio, approximately equal to 1.618033988749895',
+        category: 'Constants',
+    },
+    {
+        title: 'Imaginary Unit',
+        latex: 'i',
+        description: 'The imaginary unit, defined as the square root of -1.',
+        category: 'Constants',
+    },
+    {
+        title: 'Euler-Mascheroni Constant',
+        latex: '\\gamma',
+        description: 'The Euler-Mascheroni constant, approximately equal to 0.577215664915366',
+        category: 'Constants',
+    },
+    {
+        title: 'Speed of Light',
+        latex: 'c',
+        description: 'The speed of light in a vacuum, approximately equal to 299,792,458 meters per second.',
+        category: 'Constants',
+    },
+    {
+        title: 'Gravitational Constant',
+        latex: 'G',
+        description: 'The gravitational constant, approximately equal to 6.67430 × 10^-11 m^3 kg^-1 s^-2.',
+        category: 'Constants',
+    },
+    {
+        title: 'Planck’s Constant',
+        latex: 'h',
+        description: 'Planck’s constant, approximately equal to 6.62607015 × 10^-34 J·s.',
+        category: 'Constants',
+    },
+    {
+        title: 'Elementary Charge',
+        latex: 'e',
+        description: 'The elementary charge, approximately equal to 1.602176634 × 10^-19 coulombs.',
+        category: 'Constants',
+    },
+    {
+        title: 'Boltzmann Constant',
+        latex: 'k_B',
+        description: 'The Boltzmann constant, approximately equal to 1.380649 × 10^-23 J/K.',
+        category: 'Constants',
+    },
+    {
         title: 'Product Rule',
         latex: 'a^m \\cdot a^n = a^{m+n}',
         description: 'The product rule for exponents states that when multiplying two exponential expressions with the same base, you keep the base and add the exponents.',
