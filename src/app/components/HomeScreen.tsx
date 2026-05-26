@@ -38,6 +38,7 @@ const apps = [
   { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/1234webtool/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone' },
   { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/1234webtool/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
   { name: 'Password Generator', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/1234webtool/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
+  { name: 'Tab Manager', icon: ArrowsPointingOutIcon, color: 'from-slate-600 to-slate-900', href: `/1234webtool/apps/tab-manager${isDev ? '' : '.html'}`, desc: 'View open tabs and restore history pages from Chrome' },
   { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/1234webtool/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
   { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/1234webtool/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
   { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/1234webtool/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
