@@ -122,6 +122,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
     return true;
   }
+
+  if (message.action === "minimizeExtension") {
+    // Close the extension popup
+    chrome.windows.getCurrent((window) => {
+      if (window && window.id) {
+        chrome.windows.remove(window.id);
+      }
+    });
+    sendResponse({ success: true });
+    return true;
+  }
 });
 
 async function handleCreateReminder(data) {
