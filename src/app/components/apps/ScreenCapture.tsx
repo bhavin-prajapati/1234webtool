@@ -1,6 +1,7 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDownTrayIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useReactMediaRecorder } from 'react-media-recorder';
 
 export default function ScreenCapture() {
   const [isCapturing, setIsCapturing] = useState(false);
@@ -13,6 +14,94 @@ export default function ScreenCapture() {
   const [selection, setSelection] = useState({ startX: 0, startY: 0, endX: 0, endY: 0 });
   const selectionRef = useRef({ startX: 0, startY: 0, endX: 0, endY: 0 });
   const [isDrawing, setIsDrawing] = useState(false);
+  const recordingVideoRef = useRef<HTMLVideoElement>(null);
+  const [recordingHeight, setRecordingHeight] = useState<number | null>(null);
+
+  const {
+    status: recordingStatus,
+    startRecording,
+    stopRecording,
+    pauseRecording,
+    resumeRecording,
+    mediaBlobUrl,
+    previewStream,
+    error: recordingError,
+  } = useReactMediaRecorder({
+    screen: true,
+    audio: true,
+    blobPropertyBag: { type: 'video/webm' },
+  });
+
+  // Capture preview display height while recording so we can reuse it for
+  // the recorded blob player and keep the same visual height.
+  useEffect(() => {
+    const video = recordingVideoRef.current;
+    if (!video) return;
+
+    if (previewStream) {
+      video.onloadedmetadata = () => {
+        video.muted = true;
+        video.play().catch(() => {});
+
+        const intrinsicW = video.videoWidth || 0;
+        const intrinsicH = video.videoHeight || 0;
+        const clientW = video.clientWidth || video.getBoundingClientRect().width || 0;
+
+        if (intrinsicW && intrinsicH && clientW) {
+          setRecordingHeight(Math.round((intrinsicH / intrinsicW) * clientW));
+        } else {
+          const measured = Math.round(video.getBoundingClientRect().height || video.clientHeight || 0);
+          setRecordingHeight(measured || null);
+        }
+      };
+
+      video.srcObject = previewStream;
+      video.src = '';
+    }
+
+    return () => {
+      if (video) video.onloadedmetadata = null;
+    };
+  }, [previewStream]);
+
+  // When the recording blob is ready, attach it and apply the captured height
+  // so the recorded video displays with the same height as the preview.
+  useEffect(() => {
+    const video = recordingVideoRef.current;
+    if (!video) return;
+
+    if (mediaBlobUrl) {
+      video.onloadedmetadata = () => {
+        if (recordingHeight) {
+          video.style.height = `${recordingHeight}px`;
+        } else {
+          video.style.height = '';
+        }
+        video.muted = false;
+        video.play().catch(() => {});
+      };
+
+      video.srcObject = null;
+      video.src = mediaBlobUrl;
+    } else if (!previewStream) {
+      video.srcObject = null;
+      video.src = '';
+      video.style.height = recordingHeight ? `${recordingHeight}px` : '';
+    }
+
+    return () => {
+      if (video) video.onloadedmetadata = null;
+    };
+  }, [mediaBlobUrl, previewStream, recordingHeight]);
+
+  const downloadRecording = () => {
+    if (!mediaBlobUrl) return;
+
+    const link = document.createElement('a');
+    link.href = mediaBlobUrl;
+    link.download = `screen-recording-${Date.now()}.webm`;
+    link.click();
+  };
 
   // Minimize extension when capturing
   const minimizeExtension = () => {
@@ -332,17 +421,80 @@ export default function ScreenCapture() {
           </>
         )}
 
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-slate-700 rounded-lg">
-          <h3 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            How to use:
-          </h3>
-          <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-            <li>1. Click &quot;Take Screenshot&quot; to capture your screen</li>
-            <li>2. Click and drag to select the area you want</li>
-            <li>3. Click &quot;Save Selection&quot; to download as PNG</li>
-          </ul>
-        </div>
-      </div>
+        <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <h3 className="font-semibold text-gray-700 dark:text-gray-200">
+                Screen + Microphone Recording
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Record your screen with microphone audio and download the recording as WebM.
+              </p>
+            </div>
+            <span className="inline-flex items-center rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200 px-3 py-1 text-xs font-semibold">
+              {recordingStatus}
+            </span>
+          </div>
+
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button
+              onClick={startRecording}
+              disabled={recordingStatus === 'recording' || recordingStatus === 'acquiring_media'}
+              className="w-full bg-gradient-to-r from-violet-500 to-fuchsia-600 hover:from-violet-600 hover:to-fuchsia-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Start Recording
+            </button>
+            <button
+              onClick={stopRecording}
+              disabled={recordingStatus !== 'recording' && recordingStatus !== 'paused'}
+              className="w-full bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Stop Recording
+            </button>
+            {pauseRecording && (
+              <button
+                onClick={pauseRecording}
+                disabled={recordingStatus !== 'recording'}
+                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+              >
+                Pause
+              </button>
+            )}
+            {resumeRecording && (
+              <button
+                onClick={resumeRecording}
+                disabled={recordingStatus !== 'paused'}
+                className="w-full bg-gradient-to-r from-lime-500 to-emerald-600 hover:from-lime-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+              >
+                Resume
+              </button>
+            )}
+          </div>
+
+          <div className="mt-4">
+            <video
+              ref={recordingVideoRef}
+              controls
+              className="w-full rounded-lg"
+              style={{ height: recordingHeight ? `${recordingHeight}px` : undefined, maxHeight: 480 }}
+            />
+          </div>
+
+          <div className="mt-4 flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={downloadRecording}
+              disabled={!mediaBlobUrl}
+              className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Download Recording
+            </button>
+            {recordingError && (
+              <div className="flex-1 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-200">
+                {recordingError}
+              </div>
+            )}
+          </div>
+        </div>      </div>
 
       {/* Hidden canvas for cropping */}
       <canvas ref={canvasRef} style={{ display: 'none' }} />
