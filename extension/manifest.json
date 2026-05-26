@@ -8,7 +8,12 @@
     "storage",
     "notifications",
     "tabs",
-    "history"
+    "history",
+    "activeTab",
+    "desktopCapture",
+    "audioCapture",
+    "videoCapture"
+
   ],
   "background": {
     "service_worker": "background.js"
