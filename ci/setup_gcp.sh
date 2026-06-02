@@ -52,6 +52,7 @@ gcloud iam workload-identity-pools providers create-oidc "${PROVIDER_NAME}" \
     --attribute-condition="assertion.repository_owner=='${REPOSITORY_OWNER}' && assertion.ref=='refs/heads/main'"
 
 gcloud storage buckets create gs://${BUCKET_NAME} --location=US --project=${PROJECT_ID}
+gcloud storage buckets create gs://${BUCKET_NAME}-website --location=US --project=${PROJECT_ID}
 
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
     --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
@@ -61,8 +62,14 @@ gcloud storage buckets add-iam-policy-binding gs://${BUCKET_NAME} \
     --member="allUsers" \
     --role="roles/storage.objectAdmin"
 
+gcloud storage buckets add-iam-policy-binding gs://${BUCKET_NAME}-website \
+    --member="allUsers" \
+    --role="roles/storage.objectAdmin"
+
 gcloud storage buckets update gs://${BUCKET_NAME} --web-main-page-suffix=index.html
+gcloud storage buckets update gs://${BUCKET_NAME}-website --web-main-page-suffix=index.html
 
 echo "Bucket URL: https://storage.googleapis.com/${BUCKET_NAME}/[OBJECT_NAME]"
+echo "Website Bucket URL: https://storage.googleapis.com/${BUCKET_NAME}-website/[OBJECT_NAME]"
 
 echo "Setup complete! You can now use the service account ${SERVICE_ACCOUNT_EMAIL} with Workload Identity Federation in your GitHub Actions workflow."

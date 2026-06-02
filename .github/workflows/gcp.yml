@@ -3,8 +3,13 @@ name: Deploy to Google Cloud Storage
 on:
   workflow_dispatch:
     inputs:
-      run_optional_job:
-        description: 'Deploy to Google Cloud Storage'
+      run_app_deployment:
+        description: 'Deploy App to Google Cloud Storage'
+        required: true
+        default: false
+        type: boolean
+      run_website_deployment:
+        description: 'Deploy Website to Google Cloud Storage'
         required: true
         default: false
         type: boolean
@@ -15,9 +20,9 @@ permissions:
   id-token: 'write'
 
 jobs:
-  deploy:
+  deploy-app:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.run_optional_job == 'true' }}
+    if: ${{ github.event.inputs.run_app_deployment == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,7 +34,6 @@ jobs:
         with:
           token_format: 'access_token'
           # Use Workload Identity Federation (Recommended)
-          # 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_NAME/providers/PROVIDER_NAME'
           workload_identity_provider: 'projects/1053952427712/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
           service_account: 'webtool-service-account@webtool-493515.iam.gserviceaccount.com'
 
@@ -39,6 +43,33 @@ jobs:
         with:
           path: 'out/'  # The local folder or file to upload
           destination: '1234webtool' # Target bucket and optional prefix
+          parent: false  # If false, skips creating the 'dist' folder inside the bucket
+          gzip: true     # Enable gzip compression for the upload
+          process_gcloudignore: false # Process .gcloudignore file to exclude files from upload
+  
+  deploy-website:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_website_deployment == 'true' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 1. Authenticate to Google Cloud
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          token_format: 'access_token'
+          # Use Workload Identity Federation (Recommended)
+          workload_identity_provider: 'projects/1053952427712/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
+          service_account: 'webtool-service-account@webtool-493515.iam.gserviceaccount.com'
+
+      # 2. Upload to Cloud Storage
+      - id: 'upload-file'
+        uses: 'google-github-actions/upload-cloud-storage@v2'
+        with:
+          path: 'website/dist/'  # The local folder or file to upload
+          destination: '1234webtool-website' # Target bucket and optional prefix
           parent: false  # If false, skips creating the 'dist' folder inside the bucket
           gzip: true     # Enable gzip compression for the upload
           process_gcloudignore: false # Process .gcloudignore file to exclude files from upload
