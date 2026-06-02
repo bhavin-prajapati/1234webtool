@@ -69,7 +69,7 @@ body {
   position: relative;
   overflow-x: hidden;
   line-height: 1.6;
-  background-image: linear-gradient(180deg, rgba(11, 15, 25, 0.93) 0%, rgba(11, 15, 25, 0.98) 100%), url('/background.png');
+  background-image: linear-gradient(180deg, rgba(11, 15, 25, 0.93) 0%, rgba(11, 15, 25, 0.98) 100%), url('/1234webtool-website/background.png');
   background-repeat: repeat;
   background-attachment: fixed;
 }
