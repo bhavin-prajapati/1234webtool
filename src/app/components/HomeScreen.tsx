@@ -275,13 +275,13 @@ const HomeScreen = () => {
         </a>
       </div>
       <a
-        href="https://paypal.me/1234WebTool?country.x=CA&locale.x=en_US"
+        href="https://buymeacoffee.com/1234webtool"
         target="_blank"
         rel="noopener noreferrer"
         className="absolute bottom-4 right-4 text-sm text-white/70 hover:text-white transition-colors no-underline"
         style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
       >
-        HELP KEEP US AD FREE!
+        Buy me a coffee!
       </a>
     </div>
   );
