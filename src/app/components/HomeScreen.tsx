@@ -25,25 +25,25 @@ import {
 
 const isDev = process.env.NODE_ENV === 'development';
 const apps = [
-  { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: `/1234webtool/apps/notes${isDev ? '' : '.html'}`, desc: 'Jot down quick notes and ideas' },
-  { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: `/1234webtool/apps/calculator${isDev ? '' : '.html'}`, desc: 'Perform basic and scientific calculations' },
-  { name: 'Formulas', icon: AcademicCapIcon, color: 'from-indigo-500 to-violet-600', href: `/1234webtool/apps/formulas${isDev ? '' : '.html'}`, desc: 'Reference common math formulas with live rendering' },
-  { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: `/1234webtool/apps/weather${isDev ? '' : '.html'}`, desc: 'Check current weather conditions' },
-  { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: `/1234webtool/apps/todo${isDev ? '' : '.html'}`, desc: 'Manage your tasks and to-do lists' },
-  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches' },
-  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/1234webtool/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule' },
-  { name: 'Unit Converter', icon: ArrowsRightLeftIcon, color: 'from-cyan-400 to-cyan-600', href: `/1234webtool/apps/unit-converter${isDev ? '' : '.html'}`, desc: 'Convert between units of measurement' },
-  { name: 'Color Picker', icon: SwatchIcon, color: 'from-pink-400 to-rose-500', href: `/1234webtool/apps/color-picker${isDev ? '' : '.html'}`, desc: 'Pick colors and generate palettes' },
-  { name: 'Screen Capture', icon: PhotoIcon, color: 'from-orange-400 to-rose-500', href: `/1234webtool/apps/screen-capture${isDev ? '' : '.html'}`, desc: 'Capture and save any area of your screen' },
-  { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/1234webtool/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
-  { name: 'Regex Tester', icon: MagnifyingGlassIcon, color: 'from-purple-400 to-purple-600', href: `/1234webtool/apps/regex-tester${isDev ? '' : '.html'}`, desc: 'Test and validate regular expressions' },
-  { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/1234webtool/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone' },
-  { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/1234webtool/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
-  { name: 'Password Generator', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/1234webtool/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
-  { name: 'Tab Manager', icon: ArrowsPointingOutIcon, color: 'from-slate-600 to-slate-900', href: `/1234webtool/apps/tab-manager${isDev ? '' : '.html'}`, desc: 'View open tabs and restore history pages from Chrome' },
-  { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/1234webtool/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
-  { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/1234webtool/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
-  { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/1234webtool/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
+  { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: `/apps/notes${isDev ? '' : '.html'}`, desc: 'Jot down quick notes and ideas' },
+  { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: `/apps/calculator${isDev ? '' : '.html'}`, desc: 'Perform basic and scientific calculations' },
+  { name: 'Formulas', icon: AcademicCapIcon, color: 'from-indigo-500 to-violet-600', href: `/apps/formulas${isDev ? '' : '.html'}`, desc: 'Reference common math formulas with live rendering' },
+  { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: `/apps/weather${isDev ? '' : '.html'}`, desc: 'Check current weather conditions' },
+  { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: `/apps/todo${isDev ? '' : '.html'}`, desc: 'Manage your tasks and to-do lists' },
+  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches' },
+  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule' },
+  { name: 'Unit Converter', icon: ArrowsRightLeftIcon, color: 'from-cyan-400 to-cyan-600', href: `/apps/unit-converter${isDev ? '' : '.html'}`, desc: 'Convert between units of measurement' },
+  { name: 'Color Picker', icon: SwatchIcon, color: 'from-pink-400 to-rose-500', href: `/apps/color-picker${isDev ? '' : '.html'}`, desc: 'Pick colors and generate palettes' },
+  { name: 'Screen Capture', icon: PhotoIcon, color: 'from-orange-400 to-rose-500', href: `/apps/screen-capture${isDev ? '' : '.html'}`, desc: 'Capture and save any area of your screen' },
+  { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
+  { name: 'Regex Tester', icon: MagnifyingGlassIcon, color: 'from-purple-400 to-purple-600', href: `/apps/regex-tester${isDev ? '' : '.html'}`, desc: 'Test and validate regular expressions' },
+  { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone' },
+  { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
+  { name: 'Password Generator', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
+  { name: 'Tab Manager', icon: ArrowsPointingOutIcon, color: 'from-slate-600 to-slate-900', href: `/apps/tab-manager${isDev ? '' : '.html'}`, desc: 'View open tabs and restore history pages from Chrome' },
+  { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
+  { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
+  { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
 ];
 
 type AppItem = (typeof apps)[number];
@@ -66,11 +66,11 @@ const HomeScreen = () => {
         const orderedApps = appNames
           .map((name) => apps.find(app => app.name === name))
           .filter((app): app is AppItem => app !== undefined);
-        
+
         // Add any new apps that weren't in the saved order
         const savedNames = new Set(appNames);
         const newApps = apps.filter(app => !savedNames.has(app.name));
-        
+
         setAppsList([...orderedApps, ...newApps]);
       } catch {
         setAppsList(apps);
@@ -92,7 +92,7 @@ const HomeScreen = () => {
 
   const handleDrop = (e: React.DragEvent, dropIndex: number) => {
     e.preventDefault();
-    
+
     if (draggedItem === null || draggedItem === dropIndex) {
       setDraggedItem(null);
       setDropTargetIndex(null);
@@ -101,15 +101,15 @@ const HomeScreen = () => {
 
     const newList = [...appsList];
     const draggedItemContent = newList[draggedItem];
-    
+
     // Remove the dragged item
     newList.splice(draggedItem, 1);
-    
+
     // Insert at the drop position
     newList.splice(dropIndex, 0, draggedItemContent);
 
     setAppsList(newList);
-    
+
     // Save new order to localStorage as ordered list of app names
     const appNames = newList.map(app => app.name);
     localStorage.setItem('appOrder', JSON.stringify(appNames));
@@ -207,7 +207,7 @@ const HomeScreen = () => {
           const { app, originalIndex } = item;
           const Icon = app.icon;
           const isDragged = draggedItem === originalIndex;
-          
+
           return isRearranging ? (
             <div
               key={`${app.name}-${originalIndex}`}
@@ -254,7 +254,7 @@ const HomeScreen = () => {
         })}
       </div>
       <a
-        href={`/1234webtool/apps/privacy-policy${isDev ? '' : '.html'}`}
+        href={`/apps/privacy-policy${isDev ? '' : '.html'}`}
         className="absolute bottom-4 left-4 text-sm text-white/70 hover:text-white transition-colors no-underline"
         style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
       >
@@ -262,16 +262,16 @@ const HomeScreen = () => {
       </a>
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3">
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://tinyurl.com/1234WebTool&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on Facebook" className="text-white/70 hover:text-white transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
         </a>
         <a href="https://twitter.com/intent/tweet?url=https://tinyurl.com/1234WebTool&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on X" className="text-white/70 hover:text-white transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
         </a>
         <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tinyurl.com/1234WebTool&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" className="text-white/70 hover:text-white transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
         </a>
         <a href="https://www.reddit.com/submit?url=https://tinyurl.com/1234WebTool&title=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on Reddit" className="text-white/70 hover:text-white transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm6.066 13.98c.04.225.06.454.06.687 0 3.508-4.088 6.353-9.126 6.353S-.126 18.175-.126 14.667c0-.233.02-.462.06-.687a1.755 1.755 0 01-.744-1.43 1.76 1.76 0 011.76-1.76c.452 0 .862.175 1.17.46 1.155-.786 2.744-1.293 4.508-1.353l.893-4.195a.37.37 0 01.443-.283l2.966.63a1.252 1.252 0 012.37.53 1.252 1.252 0 01-1.25 1.252 1.252 1.252 0 01-1.24-1.105l-2.64-.562-.795 3.73c1.735.07 3.293.577 4.428 1.354a1.75 1.75 0 011.17-.46 1.76 1.76 0 011.76 1.76c0 .593-.296 1.118-.744 1.43zm-11.28.473c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25-.56-1.25-1.25-1.25-1.25.56-1.25 1.25zm7.23 3.193c-.78.78-2.28 1.04-3.02 1.04s-2.24-.26-3.02-1.04a.318.318 0 010-.45.318.318 0 01.45 0c.49.49 1.54.69 2.57.69s2.08-.2 2.57-.69a.318.318 0 01.45 0 .318.318 0 010 .45zm-.2-1.943c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm6.066 13.98c.04.225.06.454.06.687 0 3.508-4.088 6.353-9.126 6.353S-.126 18.175-.126 14.667c0-.233.02-.462.06-.687a1.755 1.755 0 01-.744-1.43 1.76 1.76 0 011.76-1.76c.452 0 .862.175 1.17.46 1.155-.786 2.744-1.293 4.508-1.353l.893-4.195a.37.37 0 01.443-.283l2.966.63a1.252 1.252 0 012.37.53 1.252 1.252 0 01-1.25 1.252 1.252 1.252 0 01-1.24-1.105l-2.64-.562-.795 3.73c1.735.07 3.293.577 4.428 1.354a1.75 1.75 0 011.17-.46 1.76 1.76 0 011.76 1.76c0 .593-.296 1.118-.744 1.43zm-11.28.473c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25-.56-1.25-1.25-1.25-1.25.56-1.25 1.25zm7.23 3.193c-.78.78-2.28 1.04-3.02 1.04s-2.24-.26-3.02-1.04a.318.318 0 010-.45.318.318 0 01.45 0c.49.49 1.54.69 2.57.69s2.08-.2 2.57-.69a.318.318 0 01.45 0 .318.318 0 010 .45zm-.2-1.943c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z" /></svg>
         </a>
       </div>
       <a

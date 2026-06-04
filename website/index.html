@@ -1,423 +1,566 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Primary SEO Meta Tags -->
-    <title>1234WebTool - The Ultimate All-in-One Chrome Productivity Extension</title>
-    <meta name="title" content="1234WebTool - The Ultimate All-in-One Chrome Productivity Extension" />
-    <meta name="description" content="1234WebTool brings together 19 essential utility apps including Notes, Todo, Calculator, Calendar, Tab Manager, Screen Capture, and Weather into a single, sleek Chrome Extension. Customize your grid and boost your productivity." />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna" />
-    <meta property="og:title" content="1234WebTool - Ultimate Chrome Productivity Extension" />
-    <meta property="og:description" content="19 essential utility apps in one lightweight, custom-rearrangeable sidebar/popup extension. Offline-first, privacy-focused, and ultra-fast." />
-    <meta property="og:image" content="/1234webtool-website/webtool.png" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="1234WebTool - Ultimate Chrome Productivity Extension" />
-    <meta property="twitter:description" content="19 essential utility apps in one lightweight, custom-rearrangeable sidebar/popup extension. Offline-first, privacy-focused, and ultra-fast." />
-    <meta property="twitter:image" content="/1234webtool-website/webtool.png" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Background glow elements -->
-    <div class="blob blob-1" aria-hidden="true"></div>
-    <div class="blob blob-2" aria-hidden="true"></div>
-    <div class="blob blob-3" aria-hidden="true"></div>
+  <!-- Primary SEO Meta Tags -->
+  <title>1234WebTool - The Ultimate All-in-One Chrome Productivity Extension</title>
+  <meta name="title" content="1234WebTool - The Ultimate All-in-One Chrome Productivity Extension" />
+  <meta name="description"
+    content="1234WebTool brings together 19 essential utility apps including Notes, Todo, Calculator, Calendar, Tab Manager, Screen Capture, and Weather into a single, sleek Chrome Extension. Customize your grid and boost your productivity." />
 
-    <!-- Header Navigation -->
-    <header class="header">
-      <div class="header-container">
-        <a href="#" class="brand-link" id="logo-link">
-          <img src="./logo.png" alt="1234WebTool Logo" class="brand-logo" width="36" height="36" />
-          <span class="brand-name">1234WebTool</span>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url"
+    content="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna" />
+  <meta property="og:title" content="1234WebTool - Ultimate Chrome Productivity Extension" />
+  <meta property="og:description"
+    content="19 essential utility apps in one lightweight, custom-rearrangeable sidebar/popup extension. Offline-first, privacy-focused, and ultra-fast." />
+  <meta property="og:image" content="/webtool.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="1234WebTool - Ultimate Chrome Productivity Extension" />
+  <meta property="twitter:description"
+    content="19 essential utility apps in one lightweight, custom-rearrangeable sidebar/popup extension. Offline-first, privacy-focused, and ultra-fast." />
+  <meta property="twitter:image" content="/webtool.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Background glow elements -->
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="brand-link" id="logo-link">
+        <img src="./logo.png" alt="1234WebTool Logo" class="brand-logo" width="36" height="36" />
+        <span class="brand-name">1234WebTool</span>
+      </a>
+      <nav class="nav" aria-label="Main Navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#benefits" class="nav-link">Benefits</a>
+        <a href="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna?hl=en"
+          target="_blank" rel="noopener noreferrer" class="btn btn-secondary nav-cta-btn">
+          <span>Add to Chrome</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.045 4.887c.801.002 1.572.164 2.285.459l-4.161 7.214-3.528-6.115c1.428-1.025 3.327-1.57 5.404-1.558zm6.657 4.298c.594.846.945 1.862.945 2.96 0 2.859-2.316 5.176-5.176 5.176-.328 0-.649-.03-.96-.089l3.527-6.112 1.664-1.935zm-7.797 4.542l-3.329-5.772 4.152.012c.597 0 1.157.172 1.639.467l-2.462 4.293-1.062.998v.002z" />
+          </svg>
         </a>
-        <nav class="nav" aria-label="Main Navigation">
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#benefits" class="nav-link">Benefits</a>
-          <a href="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna?hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-secondary nav-cta-btn">
-            <span>Add to Chrome</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.045 4.887c.801.002 1.572.164 2.285.459l-4.161 7.214-3.528-6.115c1.428-1.025 3.327-1.57 5.404-1.558zm6.657 4.298c.594.846.945 1.862.945 2.96 0 2.859-2.316 5.176-5.176 5.176-.328 0-.649-.03-.96-.089l3.527-6.112 1.664-1.935zm-7.797 4.542l-3.329-5.772 4.152.012c.597 0 1.157.172 1.639.467l-2.462 4.293-1.062.998v.002z"/></svg>
-          </a>
-        </nav>
-      </div>
-    </header>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="hero-container">
-          <div class="hero-content">
-            <div class="hero-badge">
-              <span class="badge-icon">✨</span>
-              <span class="badge-text">19 Essential Apps in 1 Sidebar</span>
-            </div>
-            <h1 class="hero-title">Your Browser's Ultimate Productivity Workspace</h1>
-            <p class="hero-description">
-              Stop cluttering your browser toolbar with dozens of extensions. <strong>1234WebTool</strong> integrates a fully customizable grid of 19 utilities—like Notes, Todo list, Calculator, Weather, Screen Capture, and Formulas—into a single, supercharged sidebar.
-            </p>
-            <div class="hero-actions">
-              <a href="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna?hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-primary hero-cta-btn" id="chrome-install-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.045 4.887c.801.002 1.572.164 2.285.459l-4.161 7.214-3.528-6.115c1.428-1.025 3.327-1.57 5.404-1.558zm6.657 4.298c.594.846.945 1.862.945 2.96 0 2.859-2.316 5.176-5.176 5.176-.328 0-.649-.03-.96-.089l3.527-6.112 1.664-1.935zm-7.797 4.542l-3.329-5.772 4.152.012c.597 0 1.157.172 1.639.467l-2.462 4.293-1.062.998v.002z"/></svg>
-                <span>Add to Chrome — It's Free</span>
-              </a>
-              <a href="#features" class="btn btn-tertiary">
-                <span>Explore Features</span>
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-              </a>
-            </div>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-icon">✨</span>
+            <span class="badge-text">19 Essential Apps in 1 Sidebar</span>
           </div>
-          <div class="hero-media">
-            <div class="media-wrapper">
-              <div class="glass-frame">
-                <img src="./webtool.png" alt="1234WebTool Extension Workspace Interface" class="app-screenshot" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features Explorer Section -->
-      <section id="features" class="features-section">
-        <div class="features-container">
-          <div class="section-header">
-            <h2 class="section-title">Explore the 19 Integrated Apps</h2>
-            <p class="section-subtitle">A powerhouse collection designed to streamline your daily tasks, developer utilities, and reminders.</p>
-          </div>
-
-          <!-- Search and Filters -->
-          <div class="search-filter-container">
-            <div class="search-bar-wrapper">
-              <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-              <input type="text" id="tool-search" placeholder="Search tools (e.g. Notes, Calculator, QR...)" aria-label="Search tools" />
-              <button id="clear-search" class="clear-btn" aria-label="Clear search" style="display: none;">
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-              </button>
-            </div>
-            
-            <div class="filter-tags" role="group" aria-label="Filter tools by category">
-              <button class="filter-btn active" data-filter="all">All</button>
-              <button class="filter-btn" data-filter="productivity">Productivity</button>
-              <button class="filter-btn" data-filter="utility">Utilities</button>
-              <button class="filter-btn" data-filter="developer">Developer</button>
-            </div>
-          </div>
-
-          <!-- Tools Grid -->
-          <div class="tools-grid" id="tools-grid">
-            <!-- Notes -->
-            <article class="tool-card reveal-item" data-category="productivity" data-tags="notes jot down text memo quick ideas scratchpad writing">
-              <div class="tool-icon-wrapper color-notes">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Notes</h3>
-              <p class="tool-desc">Jot down quick notes and ideas. Perfect for copying temporary data, saving code snippets, or draft ideas instantly.</p>
-            </article>
-
-            <!-- Calculator -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="calculator basic scientific math convert calculations equations">
-              <div class="tool-icon-wrapper color-calculator">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75h.008v.008H15.75v-.008Zm0-2.25h.008v.008H15.75v-.008Zm0-2.25h.008v.008H15.75v-.008Zm-.008 4.5h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm-2.25 4.5h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-.008 4.5h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm-2.25 4.5h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-.008 4.5h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008ZM2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 0 1-.988-1.13c1.437-1.253 3.794-1.253 5.23 0a.75.75 0 0 1-.987 1.13Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Calculator</h3>
-              <p class="tool-desc">Perform basic and scientific calculations instantly without needing a standalone app or browser tab search.</p>
-            </article>
-
-            <!-- Formulas -->
-            <article class="tool-card reveal-item" data-category="developer" data-tags="formulas math algebra science reference cheatsheet live rendering latex equation">
-              <div class="tool-icon-wrapper color-formulas">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Formulas</h3>
-              <p class="tool-desc">Reference common mathematical, scientific, and algebraic formulas formatted clearly with live rendering support.</p>
-            </article>
-
-            <!-- Weather -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="weather current cloud sun temperature forecast coordinates conditions rain wind">
-              <div class="tool-icon-wrapper color-weather">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Weather</h3>
-              <p class="tool-desc">Check current weather conditions, forecast, temperature, and wind speed in real time for any location worldwide.</p>
-            </article>
-
-            <!-- Todo -->
-            <article class="tool-card reveal-item" data-category="productivity" data-tags="todo tasks list checklist manage organization notes projects done schedule">
-              <div class="tool-icon-wrapper color-todo">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15a2.25 2.25 0 0 1 2.15 1.586m-5.8 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664M4.5 18.75h.375c1.132 0 2.052-.92 2.052-2.052V6.108c0-1.135.845-2.098 1.976-2.192a48.424 48.424 0 0 1 1.123-.08" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Todo</h3>
-              <p class="tool-desc">Manage your tasks and checklist items. Filter, mark as complete, and stay on top of your daily workflows.</p>
-            </article>
-
-            <!-- Timer -->
-            <article class="tool-card reveal-item" data-category="productivity" data-tags="timer clock stopwatch countdown alarms alert time focus pomodoro">
-              <div class="tool-icon-wrapper color-timer">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Timer</h3>
-              <p class="tool-desc">Set custom countdown timers and stopwatches. Ideal for tracking task duration, Pomodoro study sessions, or meeting lengths.</p>
-            </article>
-
-            <!-- Calendar -->
-            <article class="tool-card reveal-item" data-category="productivity" data-tags="calendar days schedule events organizer dates agenda month time">
-              <div class="tool-icon-wrapper color-calendar">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Calendar</h3>
-              <p class="tool-desc">View dates, visualize schedules, and keep track of upcoming appointments in a clean and beautiful layout.</p>
-            </article>
-
-            <!-- Unit Converter -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="unit converter arrows weight length metrics measurement temperature speed convert">
-              <div class="tool-icon-wrapper color-converter">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L17.5 12M21 7.5H7.5" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Unit Converter</h3>
-              <p class="tool-desc">Convert between various systems of measurement including length, weight, temperature, area, and volume instantly.</p>
-            </article>
-
-            <!-- Color Picker -->
-            <article class="tool-card reveal-item" data-category="developer" data-tags="color picker swatch hex rgb hsl gradient palettes hex-code css design contrast font">
-              <div class="tool-icon-wrapper color-colorpicker">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-2.22 4.583a4.5 4.5 0 0 1-1.914-3.416a4.5 4.5 0 0 1 6.136-4.5a3 3 0 0 0 2.219-4.582a4.5 4.5 0 0 1 1.914 3.416a4.5 4.5 0 0 1-6.136 4.5Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Color Picker</h3>
-              <p class="tool-desc">Select custom colors, inspect hex/RGB codes, design harmonious color palettes, and copy them directly for CSS projects.</p>
-            </article>
-
-            <!-- Screen Capture -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="screen capture photo screenshot crop display image save print snap download viewport">
-              <div class="tool-icon-wrapper color-capture">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Screen Capture</h3>
-              <p class="tool-desc">Take screenshots, capture specific viewport sizes, crop, and download/save high-definition image assets of your screen.</p>
-            </article>
-
-            <!-- JSON Formatter -->
-            <article class="tool-card reveal-item" data-category="developer" data-tags="json formatter beautifier bracket parse validate data parser arrays javascript developer">
-              <div class="tool-icon-wrapper color-json">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-                </svg>
-              </div>
-              <h3 class="tool-name">JSON Formatter</h3>
-              <p class="tool-desc">Format minified JSON files, validate complex structures, resolve bracket errors, and beautify datasets for developers.</p>
-            </article>
-
-            <!-- Regex Tester -->
-            <article class="tool-card reveal-item" data-category="developer" data-tags="regex tester regular expressions match expressions magnifying glass find replace test text pattern">
-              <div class="tool-icon-wrapper color-regex">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Regex Tester</h3>
-              <p class="tool-desc">Test, debug, and validate regular expressions against target text strings. Includes real-time match groups and highlighting.</p>
-            </article>
-
-            <!-- Speech-to-Text -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="speech to text microphone record voice audio transcript dictation writing accessibility">
-              <div class="tool-icon-wrapper color-speech">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Speech-to-Text</h3>
-              <p class="tool-desc">Convert spoken audio to written text. Dictate notes, transcribe audio prompts, and copy text directly via your microphone.</p>
-            </article>
-
-            <!-- QR Code -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="qr code qrcode generator scanner links urls mobile images barcode">
-              <div class="tool-icon-wrapper color-qrcode">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5ZM13.5 14.625h2.25v2.25H13.5v-2.25ZM15.75 16.875h2.25v2.25h-2.25v-2.25ZM13.5 19.125h2.25V21.375H13.5v-2.25ZM18 14.625h2.25v2.25H18v-2.25ZM20.25 16.875H21.375V18H20.25v-1.125ZM18 19.125h2.25V21.375H18v-2.25ZM20.25 21.375H21.375V22.5H20.25v-1.125ZM21.375 14.625H22.5v2.25h-1.125v-2.25ZM21.375 19.125H22.5v2.25h-1.125v-2.25Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">QR Code</h3>
-              <p class="tool-desc">Generate premium custom QR codes from website URLs, raw text, or custom contact credentials instantly for scan verification.</p>
-            </article>
-
-            <!-- Password Generator -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="password generator security credentials keys lock encryption symbols character numbers">
-              <div class="tool-icon-wrapper color-password">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Password Generator</h3>
-              <p class="tool-desc">Create highly secure, customizable, random passwords. Adjust character lengths, include symbols, capital letters, and numbers.</p>
-            </article>
-
-            <!-- Tab Manager -->
-            <article class="tool-card reveal-item" data-category="productivity" data-tags="tab manager window chrome history list restore tabs display navigation">
-              <div class="tool-icon-wrapper color-tabs">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 11.25v-4.5m0 4.5h-4.5m4.5 0L15 15" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Tab Manager</h3>
-              <p class="tool-desc">Gain a central view of all open browser tabs. Search tab contents, manage window clutter, and restore pages from session history.</p>
-            </article>
-
-            <!-- Quotes -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="quotes inspiration chat daily motivation wisdom texts reading thoughts bubble">
-              <div class="tool-icon-wrapper color-quotes">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.5c1.153-.086 2.294-.213 3.423-.379 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v5.279Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Quotes</h3>
-              <p class="tool-desc">Browse through curated collections of motivational, philosophical, and inspirational quotes to lift your spirits daily.</p>
-            </article>
-
-            <!-- Word Counter -->
-            <article class="tool-card reveal-item" data-category="utility" data-tags="word counter writing document text layout statistics characters lines read time font paragraphs">
-              <div class="tool-icon-wrapper color-wordcounter">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Word Counter</h3>
-              <p class="tool-desc">Analyze raw texts instantly. Retrieve character counts, word counts, line counts, paragraph totals, and average reading time.</p>
-            </article>
-
-            <!-- Reminder -->
-            <article class="tool-card reveal-item" data-category="productivity" data-tags="reminder alerts notifications time calendar scheduled alarm list bell notes text">
-              <div class="tool-icon-wrapper color-reminder">
-                <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
-                </svg>
-              </div>
-              <h3 class="tool-name">Reminder</h3>
-              <p class="tool-desc">Set custom reminders with rich text descriptions and alarms. Get native browser push notifications even when working in other tabs.</p>
-            </article>
-          </div>
-          
-          <!-- Empty State -->
-          <div id="search-empty-state" class="empty-state" style="display: none;">
-            <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <h3>No matches found</h3>
-            <p>We couldn't find a tool matching "<span id="search-query-highlight"></span>". Try searching for another productivity app.</p>
-            <button id="reset-search-btn" class="btn btn-secondary">Reset Search</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Benefits Section -->
-      <section id="benefits" class="benefits-section">
-        <div class="benefits-container">
-          <div class="section-header">
-            <h2 class="section-title">Built for Modern Browsing Workflows</h2>
-            <p class="section-subtitle">Maximize your output while keeping your browser fast, organized, and secure.</p>
-          </div>
-          <div class="benefits-grid">
-            <article class="benefit-card reveal-item">
-              <div class="benefit-icon-wrapper">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.07 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" /></svg>
-              </div>
-              <h3>Offline-First Utility</h3>
-              <p>No internet? No problem. The majority of 1234WebTool apps operate entirely offline. Your files, logs, equations, calculations, and to-do lists are saved securely to your local browser storage.</p>
-            </article>
-
-            <article class="benefit-card reveal-item">
-              <div class="benefit-icon-wrapper">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
-              </div>
-              <h3>Rearrangeable Layout</h3>
-              <p>Customize the workspace layout to fit your habits. With simple drag-and-drop mechanics (accessible via the Rearrange mode), you can shift your most-used tiles to the top and hide the rest.</p>
-            </article>
-
-            <article class="benefit-card reveal-item">
-              <div class="benefit-icon-wrapper">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-              </div>
-              <h3>Privacy-Focused</h3>
-              <p>Your privacy is paramount. 1234WebTool has zero tracking cookies, transmits zero personal data to external clouds, and requires only necessary permissions to work. Strictly local, secure utility.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Final Call to Action -->
-      <section class="cta-section">
-        <div class="cta-container reveal-item">
-          <h2>Supercharge Your Browsing Today</h2>
-          <p>Get instant access to Notes, Todo lists, Calculators, converters, and 15 other workspace apps. Completely free, customizable, and ads-free.</p>
-          <a href="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna?hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-primary cta-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.045 4.887c.801.002 1.572.164 2.285.459l-4.161 7.214-3.528-6.115c1.428-1.025 3.327-1.57 5.404-1.558zm6.657 4.298c.594.846.945 1.862.945 2.96 0 2.859-2.316 5.176-5.176 5.176-.328 0-.649-.03-.96-.089l3.527-6.112 1.664-1.935zm-7.797 4.542l-3.329-5.772 4.152.012c.597 0 1.157.172 1.639.467l-2.462 4.293-1.062.998v.002z"/></svg>
-            <span>Add to Chrome - Free Download</span>
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <img src="./logo.png" alt="1234WebTool Logo" class="brand-logo" width="30" height="30" />
-            <span class="brand-name">1234WebTool</span>
-          </div>
-          <div class="footer-socials" aria-label="Share 1234WebTool">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on Facebook" class="social-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <h1 class="hero-title">Your Browser's Ultimate Productivity Workspace</h1>
+          <p class="hero-description">
+            Stop cluttering your browser toolbar with dozens of extensions. <strong>1234WebTool</strong> integrates a
+            fully customizable grid of 19 utilities—like Notes, Todo list, Calculator, Weather, Screen Capture, and
+            Formulas—into a single, supercharged sidebar.
+          </p>
+          <div class="hero-actions">
+            <a href="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna?hl=en"
+              target="_blank" rel="noopener noreferrer" class="btn btn-primary hero-cta-btn" id="chrome-install-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.045 4.887c.801.002 1.572.164 2.285.459l-4.161 7.214-3.528-6.115c1.428-1.025 3.327-1.57 5.404-1.558zm6.657 4.298c.594.846.945 1.862.945 2.96 0 2.859-2.316 5.176-5.176 5.176-.328 0-.649-.03-.96-.089l3.527-6.112 1.664-1.935zm-7.797 4.542l-3.329-5.772 4.152.012c.597 0 1.157.172 1.639.467l-2.462 4.293-1.062.998v.002z" />
+              </svg>
+              <span>Add to Chrome — It's Free</span>
             </a>
-            <a href="https://twitter.com/intent/tweet?url=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on X" class="social-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&text=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="social-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://www.reddit.com/submit?url=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&title=Check out 1234WebTool!" target="_blank" rel="noopener noreferrer" title="Share on Reddit" class="social-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm6.066 13.98c.04.225.06.454.06.687 0 3.508-4.088 6.353-9.126 6.353S-.126 18.175-.126 14.667c0-.233.02-.462.06-.687a1.755 1.755 0 0 1-.744-1.43 1.76 1.76 0 0 1 1.76-1.76c.452 0 .862.175 1.17.46 1.155-.786 2.744-1.293 4.508-1.353l.893-4.195a.37.37 0 0 1 .443-.283l2.966.63a1.252 1.252 0 0 1 2.37.53 1.252 1.252 0 0 1-1.25 1.252 1.252 1.252 0 0 1-1.24-1.105l-2.64-.562-.795 3.73c1.735.07 3.293.577 4.428 1.354a1.75 1.75 0 0 1 1.17-.46 1.76 1.76 0 0 1 1.76 1.76c0 .593-.296 1.118-.744 1.43zm-11.28.473c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25-.56-1.25-1.25-1.25-1.25.56-1.25 1.25zm7.23 3.193c-.78.78-2.28 1.04-3.02 1.04s-2.24-.26-3.02-1.04a.318.318 0 0 1 0-.45.318.318 0 0 1 .45 0c.49.49 1.54.69 2.57.69s2.08-.2 2.57-.69a.318.318 0 0 1 .45 0 .318.318 0 0 1 0 .45zm-.2-1.943c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+            <a href="#features" class="btn btn-tertiary">
+              <span>Explore Features</span>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
             </a>
           </div>
         </div>
-        <hr class="footer-divider" />
-        <div class="footer-bottom">
-          <p class="copyright">&copy; 2026 1234WebTool. All rights reserved.</p>
-          <div class="footer-links">
-            <a href="https://buymeacoffee.com/1234webtool" target="_blank" rel="noopener noreferrer" class="footer-link-highlight">Buy me a coffee! ☕</a>
-            <a href="https://storage.googleapis.com/1234webtool/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="footer-link">Privacy Policy</a>
+        <div class="hero-media">
+          <div class="media-wrapper">
+            <div class="glass-frame">
+              <img src="./webtool.png" alt="1234WebTool Extension Workspace Interface" class="app-screenshot" />
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- Module Entrypoint Script -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <!-- Features Explorer Section -->
+    <section id="features" class="features-section">
+      <div class="features-container">
+        <div class="section-header">
+          <h2 class="section-title">Explore the 19 Integrated Apps</h2>
+          <p class="section-subtitle">A powerhouse collection designed to streamline your daily tasks, developer
+            utilities, and reminders.</p>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="search-filter-container">
+          <div class="search-bar-wrapper">
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="tool-search" placeholder="Search tools (e.g. Notes, Calculator, QR...)"
+              aria-label="Search tools" />
+            <button id="clear-search" class="clear-btn" aria-label="Clear search" style="display: none;">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="filter-tags" role="group" aria-label="Filter tools by category">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="productivity">Productivity</button>
+            <button class="filter-btn" data-filter="utility">Utilities</button>
+            <button class="filter-btn" data-filter="developer">Developer</button>
+          </div>
+        </div>
+
+        <!-- Tools Grid -->
+        <div class="tools-grid" id="tools-grid">
+          <!-- Notes -->
+          <article class="tool-card reveal-item" data-category="productivity"
+            data-tags="notes jot down text memo quick ideas scratchpad writing">
+            <div class="tool-icon-wrapper color-notes">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Notes</h3>
+            <p class="tool-desc">Jot down quick notes and ideas. Perfect for copying temporary data, saving code
+              snippets, or draft ideas instantly.</p>
+          </article>
+
+          <!-- Calculator -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="calculator basic scientific math convert calculations equations">
+            <div class="tool-icon-wrapper color-calculator">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.75 15.75h.008v.008H15.75v-.008Zm0-2.25h.008v.008H15.75v-.008Zm0-2.25h.008v.008H15.75v-.008Zm-.008 4.5h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm-2.25 4.5h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-.008 4.5h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm-2.25 4.5h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm0-2.25h.008v.008h-.008v-.008Zm-.008 4.5h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008Zm0-2.25h-.008v-.008h.008v.008ZM2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 0 1-.988-1.13c1.437-1.253 3.794-1.253 5.23 0a.75.75 0 0 1-.987 1.13Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Calculator</h3>
+            <p class="tool-desc">Perform basic and scientific calculations instantly without needing a standalone app or
+              browser tab search.</p>
+          </article>
+
+          <!-- Formulas -->
+          <article class="tool-card reveal-item" data-category="developer"
+            data-tags="formulas math algebra science reference cheatsheet live rendering latex equation">
+            <div class="tool-icon-wrapper color-formulas">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Formulas</h3>
+            <p class="tool-desc">Reference common mathematical, scientific, and algebraic formulas formatted clearly
+              with live rendering support.</p>
+          </article>
+
+          <!-- Weather -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="weather current cloud sun temperature forecast coordinates conditions rain wind">
+            <div class="tool-icon-wrapper color-weather">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Weather</h3>
+            <p class="tool-desc">Check current weather conditions, forecast, temperature, and wind speed in real time
+              for any location worldwide.</p>
+          </article>
+
+          <!-- Todo -->
+          <article class="tool-card reveal-item" data-category="productivity"
+            data-tags="todo tasks list checklist manage organization notes projects done schedule">
+            <div class="tool-icon-wrapper color-todo">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15a2.25 2.25 0 0 1 2.15 1.586m-5.8 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664M4.5 18.75h.375c1.132 0 2.052-.92 2.052-2.052V6.108c0-1.135.845-2.098 1.976-2.192a48.424 48.424 0 0 1 1.123-.08" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Todo</h3>
+            <p class="tool-desc">Manage your tasks and checklist items. Filter, mark as complete, and stay on top of
+              your daily workflows.</p>
+          </article>
+
+          <!-- Timer -->
+          <article class="tool-card reveal-item" data-category="productivity"
+            data-tags="timer clock stopwatch countdown alarms alert time focus pomodoro">
+            <div class="tool-icon-wrapper color-timer">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Timer</h3>
+            <p class="tool-desc">Set custom countdown timers and stopwatches. Ideal for tracking task duration, Pomodoro
+              study sessions, or meeting lengths.</p>
+          </article>
+
+          <!-- Calendar -->
+          <article class="tool-card reveal-item" data-category="productivity"
+            data-tags="calendar days schedule events organizer dates agenda month time">
+            <div class="tool-icon-wrapper color-calendar">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Calendar</h3>
+            <p class="tool-desc">View dates, visualize schedules, and keep track of upcoming appointments in a clean and
+              beautiful layout.</p>
+          </article>
+
+          <!-- Unit Converter -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="unit converter arrows weight length metrics measurement temperature speed convert">
+            <div class="tool-icon-wrapper color-converter">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L17.5 12M21 7.5H7.5" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Unit Converter</h3>
+            <p class="tool-desc">Convert between various systems of measurement including length, weight, temperature,
+              area, and volume instantly.</p>
+          </article>
+
+          <!-- Color Picker -->
+          <article class="tool-card reveal-item" data-category="developer"
+            data-tags="color picker swatch hex rgb hsl gradient palettes hex-code css design contrast font">
+            <div class="tool-icon-wrapper color-colorpicker">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9.53 16.122a3 3 0 0 0-2.22 4.583a4.5 4.5 0 0 1-1.914-3.416a4.5 4.5 0 0 1 6.136-4.5a3 3 0 0 0 2.219-4.582a4.5 4.5 0 0 1 1.914 3.416a4.5 4.5 0 0 1-6.136 4.5Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Color Picker</h3>
+            <p class="tool-desc">Select custom colors, inspect hex/RGB codes, design harmonious color palettes, and copy
+              them directly for CSS projects.</p>
+          </article>
+
+          <!-- Screen Capture -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="screen capture photo screenshot crop display image save print snap download viewport">
+            <div class="tool-icon-wrapper color-capture">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Screen Capture</h3>
+            <p class="tool-desc">Take screenshots, capture specific viewport sizes, crop, and download/save
+              high-definition image assets of your screen.</p>
+          </article>
+
+          <!-- JSON Formatter -->
+          <article class="tool-card reveal-item" data-category="developer"
+            data-tags="json formatter beautifier bracket parse validate data parser arrays javascript developer">
+            <div class="tool-icon-wrapper color-json">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+              </svg>
+            </div>
+            <h3 class="tool-name">JSON Formatter</h3>
+            <p class="tool-desc">Format minified JSON files, validate complex structures, resolve bracket errors, and
+              beautify datasets for developers.</p>
+          </article>
+
+          <!-- Regex Tester -->
+          <article class="tool-card reveal-item" data-category="developer"
+            data-tags="regex tester regular expressions match expressions magnifying glass find replace test text pattern">
+            <div class="tool-icon-wrapper color-regex">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Regex Tester</h3>
+            <p class="tool-desc">Test, debug, and validate regular expressions against target text strings. Includes
+              real-time match groups and highlighting.</p>
+          </article>
+
+          <!-- Speech-to-Text -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="speech to text microphone record voice audio transcript dictation writing accessibility">
+            <div class="tool-icon-wrapper color-speech">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Speech-to-Text</h3>
+            <p class="tool-desc">Convert spoken audio to written text. Dictate notes, transcribe audio prompts, and copy
+              text directly via your microphone.</p>
+          </article>
+
+          <!-- QR Code -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="qr code qrcode generator scanner links urls mobile images barcode">
+            <div class="tool-icon-wrapper color-qrcode">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5ZM13.5 14.625h2.25v2.25H13.5v-2.25ZM15.75 16.875h2.25v2.25h-2.25v-2.25ZM13.5 19.125h2.25V21.375H13.5v-2.25ZM18 14.625h2.25v2.25H18v-2.25ZM20.25 16.875H21.375V18H20.25v-1.125ZM18 19.125h2.25V21.375H18v-2.25ZM20.25 21.375H21.375V22.5H20.25v-1.125ZM21.375 14.625H22.5v2.25h-1.125v-2.25ZM21.375 19.125H22.5v2.25h-1.125v-2.25Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">QR Code</h3>
+            <p class="tool-desc">Generate premium custom QR codes from website URLs, raw text, or custom contact
+              credentials instantly for scan verification.</p>
+          </article>
+
+          <!-- Password Generator -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="password generator security credentials keys lock encryption symbols character numbers">
+            <div class="tool-icon-wrapper color-password">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Password Generator</h3>
+            <p class="tool-desc">Create highly secure, customizable, random passwords. Adjust character lengths, include
+              symbols, capital letters, and numbers.</p>
+          </article>
+
+          <!-- Tab Manager -->
+          <article class="tool-card reveal-item" data-category="productivity"
+            data-tags="tab manager window chrome history list restore tabs display navigation">
+            <div class="tool-icon-wrapper color-tabs">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 11.25v-4.5m0 4.5h-4.5m4.5 0L15 15" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Tab Manager</h3>
+            <p class="tool-desc">Gain a central view of all open browser tabs. Search tab contents, manage window
+              clutter, and restore pages from session history.</p>
+          </article>
+
+          <!-- Quotes -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="quotes inspiration chat daily motivation wisdom texts reading thoughts bubble">
+            <div class="tool-icon-wrapper color-quotes">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.5c1.153-.086 2.294-.213 3.423-.379 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v5.279Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Quotes</h3>
+            <p class="tool-desc">Browse through curated collections of motivational, philosophical, and inspirational
+              quotes to lift your spirits daily.</p>
+          </article>
+
+          <!-- Word Counter -->
+          <article class="tool-card reveal-item" data-category="utility"
+            data-tags="word counter writing document text layout statistics characters lines read time font paragraphs">
+            <div class="tool-icon-wrapper color-wordcounter">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Word Counter</h3>
+            <p class="tool-desc">Analyze raw texts instantly. Retrieve character counts, word counts, line counts,
+              paragraph totals, and average reading time.</p>
+          </article>
+
+          <!-- Reminder -->
+          <article class="tool-card reveal-item" data-category="productivity"
+            data-tags="reminder alerts notifications time calendar scheduled alarm list bell notes text">
+            <div class="tool-icon-wrapper color-reminder">
+              <svg class="tool-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+              </svg>
+            </div>
+            <h3 class="tool-name">Reminder</h3>
+            <p class="tool-desc">Set custom reminders with rich text descriptions and alarms. Get native browser push
+              notifications even when working in other tabs.</p>
+          </article>
+        </div>
+
+        <!-- Empty State -->
+        <div id="search-empty-state" class="empty-state" style="display: none;">
+          <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3>No matches found</h3>
+          <p>We couldn't find a tool matching "<span id="search-query-highlight"></span>". Try searching for another
+            productivity app.</p>
+          <button id="reset-search-btn" class="btn btn-secondary">Reset Search</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits-section">
+      <div class="benefits-container">
+        <div class="section-header">
+          <h2 class="section-title">Built for Modern Browsing Workflows</h2>
+          <p class="section-subtitle">Maximize your output while keeping your browser fast, organized, and secure.</p>
+        </div>
+        <div class="benefits-grid">
+          <article class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.07 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" />
+              </svg>
+            </div>
+            <h3>Offline-First Utility</h3>
+            <p>No internet? No problem. The majority of 1234WebTool apps operate entirely offline. Your files, logs,
+              equations, calculations, and to-do lists are saved securely to your local browser storage.</p>
+          </article>
+
+          <article class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </div>
+            <h3>Rearrangeable Layout</h3>
+            <p>Customize the workspace layout to fit your habits. With simple drag-and-drop mechanics (accessible via
+              the Rearrange mode), you can shift your most-used tiles to the top and hide the rest.</p>
+          </article>
+
+          <article class="benefit-card reveal-item">
+            <div class="benefit-icon-wrapper">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3>Privacy-Focused</h3>
+            <p>Your privacy is paramount. 1234WebTool has zero tracking cookies, transmits zero personal data to
+              external clouds, and requires only necessary permissions to work. Strictly local, secure utility.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="cta-section">
+      <div class="cta-container reveal-item">
+        <h2>Supercharge Your Browsing Today</h2>
+        <p>Get instant access to Notes, Todo lists, Calculators, converters, and 15 other workspace apps. Completely
+          free, customizable, and ads-free.</p>
+        <a href="https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna?hl=en"
+          target="_blank" rel="noopener noreferrer" class="btn btn-primary cta-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.045 4.887c.801.002 1.572.164 2.285.459l-4.161 7.214-3.528-6.115c1.428-1.025 3.327-1.57 5.404-1.558zm6.657 4.298c.594.846.945 1.862.945 2.96 0 2.859-2.316 5.176-5.176 5.176-.328 0-.649-.03-.96-.089l3.527-6.112 1.664-1.935zm-7.797 4.542l-3.329-5.772 4.152.012c.597 0 1.157.172 1.639.467l-2.462 4.293-1.062.998v.002z" />
+          </svg>
+          <span>Add to Chrome - Free Download</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="./logo.png" alt="1234WebTool Logo" class="brand-logo" width="30" height="30" />
+          <span class="brand-name">1234WebTool</span>
+        </div>
+        <div class="footer-socials" aria-label="Share 1234WebTool">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&text=Check out 1234WebTool!"
+            target="_blank" rel="noopener noreferrer" title="Share on Facebook" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="https://twitter.com/intent/tweet?url=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&text=Check out 1234WebTool!"
+            target="_blank" rel="noopener noreferrer" title="Share on X" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&text=Check out 1234WebTool!"
+            target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https://chromewebstore.google.com/detail/1234webtool-chrome-extens/fgilncbnkmahafpkkhjonnangapdjbna&title=Check out 1234WebTool!"
+            target="_blank" rel="noopener noreferrer" title="Share on Reddit" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 6.627 5.373 12 12 12s12-5.373 12-12c0-6.627-5.373-12-12-12zm6.066 13.98c.04.225.06.454.06.687 0 3.508-4.088 6.353-9.126 6.353S-.126 18.175-.126 14.667c0-.233.02-.462.06-.687a1.755 1.755 0 0 1-.744-1.43 1.76 1.76 0 0 1 1.76-1.76c.452 0 .862.175 1.17.46 1.155-.786 2.744-1.293 4.508-1.353l.893-4.195a.37.37 0 0 1 .443-.283l2.966.63a1.252 1.252 0 0 1 2.37.53 1.252 1.252 0 0 1-1.25 1.252 1.252 1.252 0 0 1-1.24-1.105l-2.64-.562-.795 3.73c1.735.07 3.293.577 4.428 1.354a1.75 1.75 0 0 1 1.17-.46 1.76 1.76 0 0 1 1.76 1.76c0 .593-.296 1.118-.744 1.43zm-11.28.473c0 .69.56 1.25 1.25 1.25s1.25-.56 1.25-1.25-.56-1.25-1.25-1.25-1.25.56-1.25 1.25zm7.23 3.193c-.78.78-2.28 1.04-3.02 1.04s-2.24-.26-3.02-1.04a.318.318 0 0 1 0-.45.318.318 0 0 1 .45 0c.49.49 1.54.69 2.57.69s2.08-.2 2.57-.69a.318.318 0 0 1 .45 0 .318.318 0 0 1 0 .45zm-.2-1.943c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2026 1234WebTool. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://buymeacoffee.com/1234webtool" target="_blank" rel="noopener noreferrer"
+            class="footer-link-highlight">Buy me a coffee! ☕</a>
+          <a href="https://storage.googleapis.com/1234webtool/privacy-policy.html" target="_blank"
+            rel="noopener noreferrer" class="footer-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Module Entrypoint Script -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
