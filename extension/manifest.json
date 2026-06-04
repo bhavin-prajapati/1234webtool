@@ -13,7 +13,6 @@
     "desktopCapture",
     "audioCapture",
     "videoCapture"
-
   ],
   "background": {
     "service_worker": "background.js"
@@ -29,8 +28,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://storage.googleapis.com/1234webtool/*"],
-      "js": ["content-script.js"],
+      "matches": [
+        "https://app.1234webtool.com/*"
+      ],
+      "js": [
+        "content-script.js"
+      ],
       "all_frames": true,
       "run_at": "document_start"
     }
