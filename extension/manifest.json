@@ -1,18 +1,12 @@
 {
   "name": "1234WebTool",
   "description": "A collection of tools to enhance your productivity and organization.",
-  "version": "1.1",
+  "version": "1.2",
   "manifest_version": 3,
   "permissions": [
     "alarms",
     "storage",
-    "notifications",
-    "tabs",
-    "history",
-    "activeTab",
-    "desktopCapture",
-    "audioCapture",
-    "videoCapture"
+    "notifications"
   ],
   "background": {
     "service_worker": "background.js"
