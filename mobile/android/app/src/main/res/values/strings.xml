@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">1234WebTool</string>
+    <string name="title_activity_main">1234WebTool</string>
+    <string name="package_name">com.webtool1234.app</string>
+    <string name="custom_url_scheme">com.webtool1234.app</string>
+</resources>
