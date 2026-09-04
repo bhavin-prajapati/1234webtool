@@ -369,6 +369,7 @@ export default function ScreenCapture() {
                   backgroundColor: '#f3f4f6',
                 }}
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   ref={screenshotImageRef}
                   src={screenshot || ''}
