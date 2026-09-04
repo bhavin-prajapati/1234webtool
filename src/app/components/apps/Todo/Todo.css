@@ -10,16 +10,19 @@
 body {
   background: var(--background-rgb);
 }
+
 .todo-app {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  width: 60%;
-  min-height: 600px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 95%;
+  max-width: 520px;
+  min-height: 500px;
   text-align: center;
   margin: 0 auto;
-  border-radius: 10px;
-  padding-bottom: 32px;
+  border-radius: 12px;
+  padding: 0 12px 32px 12px;
 }
 
 .important-btn {
@@ -38,30 +41,40 @@ body {
 }
 
 h1 {
-  margin: 32px 0;
-  font-size: 33px;
+  margin: 24px 0;
+  font-size: 32px;
 }
 
 .complete {
   text-decoration: line-through;
+  opacity: 0.7;
 }
 
 .todo-form {
-  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto 28px auto;
 }
 
 .todo-input {
-  padding: 14px 32px 14px 16px;
-  border-radius: 4px 0 0 4px;
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 8px 0 0 8px;
   border: 2px solid rgba(17, 122, 255, 1);
   outline: none;
-  width: 320px;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 .todo-button {
-  padding: 16px;
-  border: none;
-  border-radius: 0 4px 4px 0;
+  padding: 14px 22px;
+  border: 2px solid rgba(17, 122, 255, 1);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
   cursor: pointer;
   outline: none;
   background: linear-gradient(
@@ -70,12 +83,26 @@ h1 {
     rgba(20, 159, 255, 1) 100%
   );
   color: white;
-  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.todo-button:active {
+  transform: scale(0.98);
+}
+
+.todo-button:hover {
+  opacity: 0.95;
 }
 
 .todo-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   position: relative;
 }
 
@@ -83,16 +110,18 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 4px auto;
+  margin: 6px auto;
   color: white;
   background: linear-gradient(
     90deg,
     rgba(20, 159, 255, 1) 0%,
     rgba(17, 122, 255, 1) 100%
   );
-  padding: 16px;
-  border-radius: 5px;
-  width: 90%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .iconsContainer {

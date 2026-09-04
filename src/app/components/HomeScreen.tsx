@@ -20,11 +20,12 @@ import {
   XMarkIcon,
   MagnifyingGlassIcon,
   MicrophoneIcon,
-  PhotoIcon,
 } from '@heroicons/react/24/outline';
 
 const isDev = process.env.NODE_ENV === 'development';
 const apps = [
+  { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone' },
+  { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
   { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: `/apps/notes${isDev ? '' : '.html'}`, desc: 'Jot down quick notes and ideas' },
   { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: `/apps/calculator${isDev ? '' : '.html'}`, desc: 'Perform basic and scientific calculations' },
   { name: 'Formulas', icon: AcademicCapIcon, color: 'from-indigo-500 to-violet-600', href: `/apps/formulas${isDev ? '' : '.html'}`, desc: 'Reference common math formulas with live rendering' },
@@ -34,16 +35,12 @@ const apps = [
   { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule' },
   { name: 'Unit Converter', icon: ArrowsRightLeftIcon, color: 'from-cyan-400 to-cyan-600', href: `/apps/unit-converter${isDev ? '' : '.html'}`, desc: 'Convert between units of measurement' },
   { name: 'Color Picker', icon: SwatchIcon, color: 'from-pink-400 to-rose-500', href: `/apps/color-picker${isDev ? '' : '.html'}`, desc: 'Pick colors and generate palettes' },
-  { name: 'Screen Capture', icon: PhotoIcon, color: 'from-orange-400 to-rose-500', href: `/apps/screen-capture${isDev ? '' : '.html'}`, desc: 'Capture and save any area of your screen' },
   { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
   { name: 'Regex Tester', icon: MagnifyingGlassIcon, color: 'from-purple-400 to-purple-600', href: `/apps/regex-tester${isDev ? '' : '.html'}`, desc: 'Test and validate regular expressions' },
-  { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone' },
   { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
   { name: 'Password Generator', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
-  { name: 'Tab Manager', icon: ArrowsPointingOutIcon, color: 'from-slate-600 to-slate-900', href: `/apps/tab-manager${isDev ? '' : '.html'}`, desc: 'View open tabs and restore history pages from Chrome' },
   { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
   { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
-  { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
 ];
 
 type AppItem = (typeof apps)[number];
@@ -144,48 +141,44 @@ const HomeScreen = () => {
   const displayList = getDisplayList();
 
   return (
-    <div className="min-h-screen moving-background flex flex-col items-center justify-center px-8 py-16 relative">
-      {/* Rearrange Button */}
-      <div className="absolute top-4 left-4 flex gap-2 z-50">
+    <div className="min-h-screen moving-background flex flex-col items-center justify-start px-4 sm:px-8 pt-6 pb-24 relative">
+      {/* Centered Top Action Controls */}
+      <div className="w-full flex justify-center items-center gap-4 pt-4 pb-6 z-50">
         {isRearranging && (
           <button
             onClick={resetOrder}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 active:scale-95 text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer border border-white/20"
             title="Reset to default order"
+            style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
           >
-            <span
-              className="flex app-menu-link items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-800 shadow-md hover:shadow-lg no-underline text-sm font-semibold text-white"
-              style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
-            >
-              Reset
-            </span>
+            Reset
           </button>
         )}
         <button
           onClick={() => setIsRearranging(!isRearranging)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          className={`flex items-center gap-2.5 px-7 py-3 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 cursor-pointer border border-white/20 text-white ${
+            isRearranging
+              ? 'bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600'
+              : 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800'
+          }`}
           title={isRearranging ? 'Done rearranging' : 'Rearrange app tiles'}
+          style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
         >
-          <span
-            className="flex app-menu-link items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-gray-700 to-gray-800 shadow-md hover:shadow-lg no-underline text-sm font-semibold text-white"
-            style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
-          >
-            {isRearranging ? (
-              <>
-                <XMarkIcon style={{ width: 20, height: 20 }} />
-                Done
-              </>
-            ) : (
-              <>
-                <ArrowsPointingOutIcon style={{ width: 20, height: 20 }} />
-                Rearrange
-              </>
-            )}
-          </span>
+          {isRearranging ? (
+            <>
+              <XMarkIcon style={{ width: 22, height: 22 }} />
+              Done
+            </>
+          ) : (
+            <>
+              <ArrowsPointingOutIcon style={{ width: 22, height: 22 }} />
+              Rearrange
+            </>
+          )}
         </button>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 max-w-4xl w-full">
+      <div className="flex flex-wrap justify-center gap-4 max-w-4xl w-full my-auto">
         {displayList.map((item, displayIndex) => {
           if (item.type === 'placeholder') {
             return (

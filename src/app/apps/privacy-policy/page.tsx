@@ -1,9 +1,22 @@
 'use client';
 
+import React from 'react';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+
 export default function PrivacyPolicyPage() {
+  const handleBack = () => {
+    if (typeof window !== 'undefined') {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = '/';
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-3xl mx-auto px-6 py-12">
+    <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-6">
+      <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-xl border border-white/40 p-6 sm:p-10">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
         <p className="text-sm text-gray-500 mb-8">Last updated: May 12, 2026</p>
 
@@ -64,6 +77,18 @@ export default function PrivacyPolicyPage() {
               with an updated revision date.
             </p>
           </section>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
+          <button
+            onClick={handleBack}
+            className="flex items-center gap-2.5 px-7 py-3 rounded-xl bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 active:scale-95 text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer border border-white/20"
+            style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
+            title="Back to Home"
+          >
+            <ArrowLeftIcon style={{ width: 22, height: 22 }} />
+            <span>Back</span>
+          </button>
         </div>
       </div>
     </div>

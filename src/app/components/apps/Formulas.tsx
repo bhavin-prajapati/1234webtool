@@ -1420,9 +1420,9 @@ export default function Formulas() {
     }, [visibleCategories]);
 
     return (
-        <div className="flex justify-center px-4 pb-10">
-            <div className="max-w-xl mx-auto bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200 shadow-xl p-8">
-                <div className="mb-8">
+        <div className="w-full max-w-full flex justify-center px-3 sm:px-4 pb-12 overflow-x-hidden box-border">
+            <div className="w-full max-w-xl mx-auto bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200 shadow-xl p-4 sm:p-8 overflow-hidden box-border">
+                <div className="mb-6 sm:mb-8">
                     <label htmlFor="formula-search" className="sr-only">
                         Search formulas
                     </label>
@@ -1437,58 +1437,62 @@ export default function Formulas() {
                 </div>
 
                 {visibleCategories.length === 0 ? (
-                    <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center text-slate-600">
+                    <div className="rounded-2xl sm:rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-10 text-center text-slate-600">
                         No formulas matched your search. Try a different term like &#34;algebra&#34;, &#34;geometry&#34;, or &#34;calculus&#34;.
                     </div>
                 ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-4 w-full max-w-full">
                         {visibleCategories.map((category) => {
                             const categoryFormulas = formulasByCategory[category] || [];
                             const isOpen = openCategories.includes(category);
 
                             return (
-                                <div key={category} className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
+                                <div key={category} className="overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50 shadow-sm w-full max-w-full">
                                     <button
                                         type="button"
                                         onClick={() => toggleCategory(category)}
-                                        className="w-full px-6 py-5 text-left"
+                                        className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left"
                                     >
-                                        <div className="flex items-center justify-between gap-4">
-                                            <div>
-                                                <p className="text-sm uppercase tracking-[0.24em] text-slate-500">{category}</p>
-                                                <p className="text-lg font-semibold text-slate-900">{categoryFormulas.length} formulas</p>
+                                        <div className="flex items-center justify-between gap-3">
+                                            <div className="min-w-0 flex-1">
+                                                <p className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.24em] text-slate-500 truncate">{category}</p>
+                                                <p className="text-base sm:text-lg font-semibold text-slate-900">{categoryFormulas.length} formulas</p>
                                             </div>
-                                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white">
+                                            <span className="inline-flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white font-bold">
                                                 {isOpen ? '−' : '+'}
                                             </span>
                                         </div>
                                     </button>
 
                                     <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-none' : 'max-h-0'}`}>
-                                        <div className="space-y-4 border-t border-slate-200 px-6 py-6">
-                                            <div>
+                                        <div className="space-y-4 border-t border-slate-200 px-3 sm:px-6 py-4 sm:py-6 w-full max-w-full">
+                                            <div className="w-full max-w-full">
                                                 {categoryFormulas.map((formula) => (
                                                     <div
                                                         key={formula.title}
-                                                        className="rounded-3xl mb-4 border border-slate-200 bg-white p-5 shadow-sm"
+                                                        className="rounded-2xl sm:rounded-3xl mb-4 border border-slate-200 bg-white p-3.5 sm:p-5 shadow-sm w-full max-w-full overflow-hidden"
                                                     >
                                                         <div className="mb-3">
-                                                            <div className="flex items-baseline justify-between gap-3">
-                                                                <h2 className="text-xl font-semibold text-slate-900">{formula.title}</h2>
-                                                                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-600">
-                                                                    {formula.category}
-                                                                </span>
-                                                                {formula.subcategory && (
-                                                                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-600">
-                                                                        {formula.subcategory}
+                                                            <div className="flex flex-wrap items-baseline justify-between gap-2">
+                                                                <h2 className="text-lg sm:text-xl font-semibold text-slate-900 break-words">{formula.title}</h2>
+                                                                <div className="flex flex-wrap gap-1.5">
+                                                                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs uppercase tracking-wider text-slate-600">
+                                                                        {formula.category}
                                                                     </span>
-                                                                )}
+                                                                    {formula.subcategory && (
+                                                                        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs uppercase tracking-wider text-slate-600">
+                                                                            {formula.subcategory}
+                                                                        </span>
+                                                                    )}
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div className="mb-4 rounded-3xl border border-slate-200 bg-slate-50 text-center text-slate-900">
-                                                            <TeX block>{formula.latex}</TeX>
+                                                        <div className="mb-4 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 p-2 sm:p-3 text-center text-slate-900 overflow-x-auto max-w-full [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300">
+                                                            <div className="inline-block max-w-full overflow-x-auto py-1">
+                                                                <TeX block>{formula.latex}</TeX>
+                                                            </div>
                                                         </div>
-                                                        <p className="text-slate-600">{formula.description}</p>
+                                                        <p className="text-sm sm:text-base text-slate-600 break-words">{formula.description}</p>
                                                     </div>
                                                 ))}
                                             </div>
