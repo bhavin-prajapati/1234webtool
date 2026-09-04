@@ -75,20 +75,22 @@ const HomeScreen = () => {
     }
   }, []);
 
+  const [selectedTileIndex, setSelectedTileIndex] = useState<number | null>(null);
+
+  // Desktop Drag Handlers
   const handleDragStart = (index: number) => {
     setDraggedItem(index);
   };
 
   const handleDragOver = (e: React.DragEvent, index: number) => {
     e.preventDefault();
-    // Only set drop target if it's not the dragged item
     if (draggedItem !== null && draggedItem !== index) {
       setDropTargetIndex(index);
     }
   };
 
-  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
-    e.preventDefault();
+  const handleDrop = (e: React.DragEvent | null, dropIndex: number) => {
+    if (e) e.preventDefault();
 
     if (draggedItem === null || draggedItem === dropIndex) {
       setDraggedItem(null);
@@ -99,20 +101,15 @@ const HomeScreen = () => {
     const newList = [...appsList];
     const draggedItemContent = newList[draggedItem];
 
-    // Remove the dragged item
     newList.splice(draggedItem, 1);
-
-    // Insert at the drop position
     newList.splice(dropIndex, 0, draggedItemContent);
 
     setAppsList(newList);
-
-    // Save new order to localStorage as ordered list of app names
-    const appNames = newList.map(app => app.name);
-    localStorage.setItem('appOrder', JSON.stringify(appNames));
+    localStorage.setItem('appOrder', JSON.stringify(newList.map(app => app.name)));
 
     setDraggedItem(null);
     setDropTargetIndex(null);
+    setSelectedTileIndex(null);
   };
 
   const handleDragEnd = () => {
@@ -120,9 +117,84 @@ const HomeScreen = () => {
     setDropTargetIndex(null);
   };
 
+  // Mobile Touch Drag Handlers
+  const handleTouchStart = (originalIndex: number, displayIndex: number) => {
+    setDraggedItem(originalIndex);
+    setDropTargetIndex(displayIndex);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (draggedItem === null) return;
+    const touch = e.touches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    const tileEl = element?.closest('[data-display-index]');
+    if (tileEl) {
+      const idxStr = tileEl.getAttribute('data-display-index');
+      if (idxStr !== null) {
+        const hoverIdx = parseInt(idxStr, 10);
+        if (!isNaN(hoverIdx) && hoverIdx !== dropTargetIndex) {
+          setDropTargetIndex(hoverIdx);
+        }
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (draggedItem !== null && dropTargetIndex !== null && draggedItem !== dropTargetIndex) {
+      const newList = [...appsList];
+      const draggedItemContent = newList[draggedItem];
+      newList.splice(draggedItem, 1);
+      newList.splice(dropTargetIndex, 0, draggedItemContent);
+      setAppsList(newList);
+      localStorage.setItem('appOrder', JSON.stringify(newList.map(app => app.name)));
+    }
+    setDraggedItem(null);
+    setDropTargetIndex(null);
+    setSelectedTileIndex(null);
+  };
+
+  // Quick Move with Arrow Buttons
+  const moveAppByDisplayIndex = (currentDisplayIndex: number, direction: 'prev' | 'next') => {
+    const targetDisplayIndex = direction === 'prev' ? currentDisplayIndex - 1 : currentDisplayIndex + 1;
+    if (targetDisplayIndex < 0 || targetDisplayIndex >= appsList.length) return;
+
+    const newList = [...appsList];
+    const [movedItem] = newList.splice(currentDisplayIndex, 1);
+    newList.splice(targetDisplayIndex, 0, movedItem);
+
+    setAppsList(newList);
+    localStorage.setItem('appOrder', JSON.stringify(newList.map(app => app.name)));
+    setSelectedTileIndex(null);
+  };
+
+  // Tap-to-Swap for Mobile
+  const handleTileTap = (displayIndex: number) => {
+    if (selectedTileIndex === null) {
+      setSelectedTileIndex(displayIndex);
+    } else if (selectedTileIndex === displayIndex) {
+      setSelectedTileIndex(null);
+    } else {
+      const newList = [...appsList];
+      const temp = newList[selectedTileIndex];
+      newList[selectedTileIndex] = newList[displayIndex];
+      newList[displayIndex] = temp;
+      setAppsList(newList);
+      localStorage.setItem('appOrder', JSON.stringify(newList.map(app => app.name)));
+      setSelectedTileIndex(null);
+    }
+  };
+
   const resetOrder = () => {
     setAppsList(apps);
+    setSelectedTileIndex(null);
     localStorage.removeItem('appOrder');
+  };
+
+  const toggleRearranging = () => {
+    setIsRearranging(!isRearranging);
+    setSelectedTileIndex(null);
+    setDraggedItem(null);
+    setDropTargetIndex(null);
   };
 
   const getDisplayList = (): DisplayItem[] => {
@@ -143,39 +215,49 @@ const HomeScreen = () => {
   return (
     <div className="min-h-screen moving-background flex flex-col items-center justify-start px-4 sm:px-8 pt-6 pb-24 relative">
       {/* Centered Top Action Controls */}
-      <div className="w-full flex justify-center items-center gap-4 pt-4 pb-6 z-50">
-        {isRearranging && (
+      <div className="w-full flex flex-col items-center gap-2 pt-4 pb-4 z-50">
+        <div className="flex items-center justify-center gap-4">
+          {isRearranging && (
+            <button
+              onClick={resetOrder}
+              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 active:scale-95 text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer border border-white/20"
+              title="Reset to default order"
+              style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
+            >
+              Reset
+            </button>
+          )}
           <button
-            onClick={resetOrder}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 active:scale-95 text-white font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer border border-white/20"
-            title="Reset to default order"
+            onClick={toggleRearranging}
+            className={`flex items-center gap-2.5 px-7 py-3 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 cursor-pointer border border-white/20 text-white ${
+              isRearranging
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600'
+                : 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800'
+            }`}
+            title={isRearranging ? 'Done rearranging' : 'Rearrange app tiles'}
             style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
           >
-            Reset
+            {isRearranging ? (
+              <>
+                <XMarkIcon style={{ width: 22, height: 22 }} />
+                Done
+              </>
+            ) : (
+              <>
+                <ArrowsPointingOutIcon style={{ width: 22, height: 22 }} />
+                Rearrange
+              </>
+            )}
           </button>
+        </div>
+
+        {isRearranging && (
+          <p className="text-white/85 text-xs sm:text-sm font-medium text-center mt-1 select-none px-4" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+            {selectedTileIndex !== null
+              ? `Tap another tile to swap with #${selectedTileIndex + 1}`
+              : 'Drag with your finger, tap tiles to swap, or use ◀ ▶ to move.'}
+          </p>
         )}
-        <button
-          onClick={() => setIsRearranging(!isRearranging)}
-          className={`flex items-center gap-2.5 px-7 py-3 rounded-xl font-semibold text-base shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 cursor-pointer border border-white/20 text-white ${
-            isRearranging
-              ? 'bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600'
-              : 'bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800'
-          }`}
-          title={isRearranging ? 'Done rearranging' : 'Rearrange app tiles'}
-          style={{ fontFamily: 'Arial, sans-serif', textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
-        >
-          {isRearranging ? (
-            <>
-              <XMarkIcon style={{ width: 22, height: 22 }} />
-              Done
-            </>
-          ) : (
-            <>
-              <ArrowsPointingOutIcon style={{ width: 22, height: 22 }} />
-              Rearrange
-            </>
-          )}
-        </button>
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 max-w-4xl w-full my-auto">
@@ -184,15 +266,16 @@ const HomeScreen = () => {
             return (
               <div
                 key={`placeholder-${displayIndex}`}
+                data-display-index={displayIndex}
                 onDragOver={(e) => handleDragOver(e, displayIndex)}
                 onDrop={(e) => handleDrop(e, displayIndex)}
-                className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-4 border-dashed border-white/50 bg-white/10 transition-all duration-200 w-32 h-32"
+                className="flex flex-col items-center justify-center gap-2 p-3 rounded-2xl border-4 border-dashed border-white/60 bg-white/15 transition-all duration-150 w-32 h-36"
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
-                <div className="w-8 h-8 border-2 border-white/50 rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-white/50 rounded-full"></div>
+                <div className="w-8 h-8 border-2 border-white/60 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-white/60 rounded-full"></div>
                 </div>
-                <span className="text-xs text-white/70 text-center">Drop here</span>
+                <span className="text-xs text-white/80 font-medium text-center">Drop here</span>
               </div>
             );
           }
@@ -200,31 +283,72 @@ const HomeScreen = () => {
           const { app, originalIndex } = item;
           const Icon = app.icon;
           const isDragged = draggedItem === originalIndex;
+          const isSelected = selectedTileIndex === displayIndex;
 
           return isRearranging ? (
             <div
               key={`${app.name}-${originalIndex}`}
+              data-display-index={displayIndex}
               draggable={!isDragged}
               onDragStart={() => handleDragStart(originalIndex)}
               onDragOver={(e) => handleDragOver(e, displayIndex)}
               onDrop={(e) => handleDrop(e, displayIndex)}
               onDragEnd={handleDragEnd}
-              className={`flex flex-col items-center justify-center gap-2 p-4 rounded-xl transition-all duration-200 w-32 h-32 cursor-move
-                          ${isDragged ? 'opacity-0' : ''}
-                          bg-gradient-to-br ${app.color} shadow-md hover:shadow-xl`}
+              onTouchStart={() => handleTouchStart(originalIndex, displayIndex)}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
+              onClick={() => handleTileTap(displayIndex)}
+              className={`flex flex-col items-center justify-between p-2.5 rounded-2xl transition-all duration-200 w-32 h-36 select-none touch-none cursor-grab active:cursor-grabbing
+                          ${isDragged ? 'opacity-30 scale-95' : ''}
+                          ${isSelected ? 'ring-4 ring-yellow-400 scale-105 shadow-2xl' : 'shadow-md hover:shadow-xl'}
+                          bg-gradient-to-br ${app.color}`}
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
-              {!isDragged && (
-                <>
-                  <Icon style={{ width: 32, height: 32, color: 'white', strokeWidth: 1.5 }} />
-                  <span
-                    className="text-sm font-semibold text-white text-center leading-tight"
-                    style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
-                  >
-                    {app.name}
-                  </span>
-                </>
-              )}
+              <div className="flex flex-col items-center justify-center gap-1.5 pt-1 pointer-events-none">
+                <Icon style={{ width: 32, height: 32, color: 'white', strokeWidth: 1.5 }} />
+                <span
+                  className="text-xs sm:text-sm font-semibold text-white text-center leading-tight line-clamp-1"
+                  style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
+                >
+                  {app.name}
+                </span>
+              </div>
+
+              {/* Mobile and Desktop Arrow Controls */}
+              <div className="flex items-center justify-between w-full px-0.5 pt-1 mt-auto z-20">
+                <button
+                  type="button"
+                  disabled={displayIndex === 0}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    moveAppByDisplayIndex(displayIndex, 'prev');
+                  }}
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center bg-black/40 hover:bg-black/60 active:scale-90 text-white text-xs font-bold transition-all ${
+                    displayIndex === 0 ? 'opacity-20 cursor-not-allowed' : 'opacity-85 hover:opacity-100 cursor-pointer'
+                  }`}
+                  title="Move left"
+                >
+                  ◀
+                </button>
+                <span className="text-[11px] text-white/90 font-mono font-bold select-none">
+                  #{displayIndex + 1}
+                </span>
+                <button
+                  type="button"
+                  disabled={displayIndex === appsList.length - 1}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    moveAppByDisplayIndex(displayIndex, 'next');
+                  }}
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center bg-black/40 hover:bg-black/60 active:scale-90 text-white text-xs font-bold transition-all ${
+                    displayIndex === appsList.length - 1 ? 'opacity-20 cursor-not-allowed' : 'opacity-85 hover:opacity-100 cursor-pointer'
+                  }`}
+                  title="Move right"
+                >
+                  ▶
+                </button>
+              </div>
             </div>
           ) : (
             <a
