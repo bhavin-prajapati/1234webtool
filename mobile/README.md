@@ -55,9 +55,30 @@ npm run sync-web
 You don't even need to install the multi-gigabyte Android SDK locally!
 A GitHub Actions workflow is preconfigured in `.github/workflows/build-apk.yml`:
 1. Push your changes to GitHub (`git push`).
-2. Go to your repository on GitHub -> **Actions** tab -> **Build Android APK**.
+2. Go to your repository on GitHub -> **Actions** tab -> **Build Android Artifacts**.
 3. You can also trigger it manually using **Run workflow**.
 4. Once completed, download the `1234webtool-debug-apk` artifact directly to your phone or computer.
+
+The same workflow creates a signed Play Store bundle at `mobile/android/app/build/outputs/bundle/release/app-release.aab` and uploads it as `1234webtool-release-bundle`.
+
+#### Configure Play Store signing
+
+Create or use the upload keystore registered for this app. Then add these repository secrets under **Settings -> Secrets and variables -> Actions**:
+
+```text
+ANDROID_KEYSTORE_BASE64
+ANDROID_KEYSTORE_PASSWORD
+ANDROID_KEY_ALIAS
+ANDROID_KEY_PASSWORD
+```
+
+To encode the keystore for `ANDROID_KEYSTORE_BASE64`:
+
+```bash
+base64 < upload-keystore.jks | pbcopy
+```
+
+Keep the keystore and passwords backed up securely. The same upload key must be used for future Play Store releases.
 
 ### How to Install the APK onto your Android Phone
 1. **Direct Download**:
