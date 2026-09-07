@@ -20,24 +20,25 @@ import {
   XMarkIcon,
   MagnifyingGlassIcon,
   MicrophoneIcon,
+  LockClosedIcon,
 } from '@heroicons/react/24/outline';
 
 const isDev = process.env.NODE_ENV === 'development';
 const apps = [
-  { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone' },
+  { name: 'Speech-to-Text', icon: MicrophoneIcon, color: 'from-teal-400 to-cyan-600', href: `/apps/speech-to-text${isDev ? '' : '.html'}`, desc: 'Convert speech to text using your microphone', premium: true },
   { name: 'Reminder', icon: BellAlertIcon, color: 'from-indigo-500 to-purple-600', href: `/apps/reminder${isDev ? '' : '.html'}`, desc: 'Set reminders with rich text and notifications' },
   { name: 'Notes', icon: PencilSquareIcon, color: 'from-yellow-400 to-yellow-500', href: `/apps/notes${isDev ? '' : '.html'}`, desc: 'Jot down quick notes and ideas' },
   { name: 'Calculator', icon: CalculatorIcon, color: 'from-gray-700 to-gray-800', href: `/apps/calculator${isDev ? '' : '.html'}`, desc: 'Perform basic and scientific calculations' },
-  { name: 'Formulas', icon: AcademicCapIcon, color: 'from-indigo-500 to-violet-600', href: `/apps/formulas${isDev ? '' : '.html'}`, desc: 'Reference common math formulas with live rendering' },
+  { name: 'Formulas', icon: AcademicCapIcon, color: 'from-indigo-500 to-violet-600', href: `/apps/formulas${isDev ? '' : '.html'}`, desc: 'Reference common math formulas with live rendering', premium: true },
   { name: 'Weather', icon: CloudIcon, color: 'from-blue-400 to-blue-600', href: `/apps/weather${isDev ? '' : '.html'}`, desc: 'Check current weather conditions' },
   { name: 'Todo', icon: ClipboardDocumentListIcon, color: 'from-green-400 to-green-600', href: `/apps/todo${isDev ? '' : '.html'}`, desc: 'Manage your tasks and to-do lists' },
-  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches' },
-  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule' },
+  { name: 'Timer', icon: ClockIcon, color: 'from-red-400 to-red-500', href: `/apps/timer${isDev ? '' : '.html'}`, desc: 'Set timers and stopwatches', premium: true },
+  { name: 'Calendar', icon: CalendarDaysIcon, color: 'from-red-400 to-red-500', href: `/apps/calendar${isDev ? '' : '.html'}`, desc: 'View and manage your schedule', premium: true },
   { name: 'Unit Converter', icon: ArrowsRightLeftIcon, color: 'from-cyan-400 to-cyan-600', href: `/apps/unit-converter${isDev ? '' : '.html'}`, desc: 'Convert between units of measurement' },
   { name: 'Color Picker', icon: SwatchIcon, color: 'from-pink-400 to-rose-500', href: `/apps/color-picker${isDev ? '' : '.html'}`, desc: 'Pick colors and generate palettes' },
   { name: 'JSON Formatter', icon: CodeBracketIcon, color: 'from-amber-400 to-orange-500', href: `/apps/json-formatter${isDev ? '' : '.html'}`, desc: 'Format and validate JSON data' },
   { name: 'Regex Tester', icon: MagnifyingGlassIcon, color: 'from-purple-400 to-purple-600', href: `/apps/regex-tester${isDev ? '' : '.html'}`, desc: 'Test and validate regular expressions' },
-  { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs' },
+  { name: 'QR Code', icon: QrCodeIcon, color: 'from-gray-600 to-gray-800', href: `/apps/qr-code${isDev ? '' : '.html'}`, desc: 'Generate QR codes from text or URLs', premium: true },
   { name: 'Password Generator', icon: KeyIcon, color: 'from-emerald-500 to-green-600', href: `/apps/password-generator${isDev ? '' : '.html'}`, desc: 'Generate secure random passwords' },
   { name: 'Quotes', icon: ChatBubbleLeftIcon, color: 'from-violet-500 to-purple-600', href: `/apps/quotes${isDev ? '' : '.html'}`, desc: 'Browse inspirational quotes' },
   { name: 'Word Counter', icon: DocumentTextIcon, color: 'from-sky-400 to-blue-500', href: `/apps/word-counter${isDev ? '' : '.html'}`, desc: 'Count words, characters, and more' },
@@ -355,7 +356,7 @@ const HomeScreen = () => {
               key={`${app.name}-${originalIndex}`}
               href={app.href}
               title={app.desc}
-              className={`app-menu-link flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-gradient-to-br ${app.color}
+              className={`app-menu-link relative flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-gradient-to-br ${app.color}
                           shadow-md hover:shadow-xl hover:scale-105 active:scale-95
                           transition-all duration-200 no-underline w-32 h-32`}
             >
@@ -366,6 +367,11 @@ const HomeScreen = () => {
               >
                 {app.name}
               </span>
+              {app.premium && (
+                <span className="absolute top-2 right-2 rounded-full bg-black/45 p-1.5 text-white shadow-md" aria-label="Premium app">
+                  <LockClosedIcon style={{ width: 16, height: 16, strokeWidth: 2.5 }} />
+                </span>
+              )}
             </a>
           );
         })}
