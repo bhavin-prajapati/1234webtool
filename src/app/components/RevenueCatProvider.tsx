@@ -66,7 +66,7 @@ export default function RevenueCatProvider({ children }: { children: React.React
 
         await Purchases.setLogLevel({ level: LOG_LEVEL.DEBUG });
         await Purchases.configure({
-          apiKey: 'test_FxMsVTsDntPXsueCNgGsPEhCXdQ',
+          apiKey: 'goog_HmTPUziixxxDEuRYDFvRgvLKyqr',
         });
         await refreshEntitlement();
 
