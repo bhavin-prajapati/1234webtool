@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
+import { useRevenueCat } from './RevenueCatProvider';
 
 type EntitlementStatus = 'loading' | 'granted' | 'denied';
 
@@ -31,6 +32,7 @@ export default function PaywallGate({
   children,
   entitlementId = '1234webtool_pro',
 }: PaywallGateProps) {
+  const { refreshEntitlement } = useRevenueCat();
   const [status, setStatus] = useState<EntitlementStatus>('loading');
   const [paywallDismissed, setPaywallDismissed] = useState(false);
   const isNative = Capacitor.getPlatform() !== 'web';
@@ -71,6 +73,7 @@ export default function PaywallGate({
         result.result === PAYWALL_RESULT.RESTORED ||
         result.result === PAYWALL_RESULT.NOT_PRESENTED // already has entitlement
       ) {
+        await refreshEntitlement();
         setStatus('granted');
       } else {
         setPaywallDismissed(true);

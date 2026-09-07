@@ -1,7 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
+
+interface RevenueCatContextValue {
+  isPro: boolean | null;
+  refreshEntitlement: () => Promise<boolean>;
+}
+
+const RevenueCatContext = createContext<RevenueCatContextValue>({
+  isPro: null,
+  refreshEntitlement: async () => false,
+});
+
+export function useRevenueCat() {
+  return useContext(RevenueCatContext);
+}
 
 /**
  * RevenueCatProvider
@@ -13,11 +27,32 @@ import { Capacitor } from '@capacitor/core';
  *
  * Rendered as a zero-UI component — it mounts invisibly in the root layout.
  */
-export default function RevenueCatProvider() {
+export default function RevenueCatProvider({ children }: { children: React.ReactNode }) {
+  const [isPro, setIsPro] = useState<boolean | null>(null);
+
+  const refreshEntitlement = useCallback(async () => {
+    if (Capacitor.getPlatform() === 'web') {
+      setIsPro(true);
+      return true;
+    }
+
+    try {
+      const { Purchases } = await import('@revenuecat/purchases-capacitor');
+      const { customerInfo } = await Purchases.getCustomerInfo();
+      const hasAccess = typeof customerInfo.entitlements.active['1234webtool_pro'] !== 'undefined';
+      setIsPro(hasAccess);
+      return hasAccess;
+    } catch (err) {
+      console.error('[RevenueCat] Failed to refresh entitlement:', err);
+      setIsPro(true);
+      return true;
+    }
+  }, []);
+
   useEffect(() => {
     const platform = Capacitor.getPlatform();
     if (platform === 'web') {
-      // Not running inside native Capacitor — skip SDK init.
+      setIsPro(true);
       return;
     }
 
@@ -33,14 +68,19 @@ export default function RevenueCatProvider() {
         await Purchases.configure({
           apiKey: 'test_FxMsVTsDntPXsueCNgGsPEhCXdQ',
         });
+        await refreshEntitlement();
 
         console.log('[RevenueCat] SDK configured successfully on', platform);
       } catch (err) {
         console.error('[RevenueCat] Failed to configure SDK:', err);
+        setIsPro(true);
       }
     })();
   }, []);
 
-  // Renders nothing — pure side-effect component.
-  return null;
+  return (
+    <RevenueCatContext.Provider value={{ isPro, refreshEntitlement }}>
+      {children}
+    </RevenueCatContext.Provider>
+  );
 }

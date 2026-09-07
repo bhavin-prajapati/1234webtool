@@ -23,9 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geist.variable} font-sans`}>
-        <RevenueCatProvider />
-        {children}
-        <ReminderNotifierWrapper />
+        <RevenueCatProvider>
+          {children}
+          <ReminderNotifierWrapper />
+        </RevenueCatProvider>
       </body>
     </html>
   );

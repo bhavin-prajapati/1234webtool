@@ -22,6 +22,7 @@ import {
   MicrophoneIcon,
   LockClosedIcon,
 } from '@heroicons/react/24/outline';
+import { useRevenueCat } from './RevenueCatProvider';
 
 const isDev = process.env.NODE_ENV === 'development';
 const apps = [
@@ -50,6 +51,7 @@ type DisplayItem =
   | { type: 'placeholder' };
 
 const HomeScreen = () => {
+  const { isPro, refreshEntitlement } = useRevenueCat();
   const [isRearranging, setIsRearranging] = useState(false);
   const [appsList, setAppsList] = useState(apps);
   const [draggedItem, setDraggedItem] = useState<number | null>(null);
@@ -57,6 +59,7 @@ const HomeScreen = () => {
 
   // Load custom app order from localStorage
   useEffect(() => {
+    refreshEntitlement();
     const savedOrder = localStorage.getItem('appOrder');
     if (savedOrder) {
       try {
@@ -74,7 +77,7 @@ const HomeScreen = () => {
         setAppsList(apps);
       }
     }
-  }, []);
+  }, [refreshEntitlement]);
 
   const [selectedTileIndex, setSelectedTileIndex] = useState<number | null>(null);
 
@@ -367,7 +370,7 @@ const HomeScreen = () => {
               >
                 {app.name}
               </span>
-              {app.premium && (
+              {app.premium && isPro !== true && (
                 <span className="absolute top-2 right-2 rounded-full bg-black/45 p-1.5 text-white shadow-md" aria-label="Premium app">
                   <LockClosedIcon style={{ width: 16, height: 16, strokeWidth: 2.5 }} />
                 </span>
